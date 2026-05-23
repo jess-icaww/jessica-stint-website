@@ -25,7 +25,7 @@ export function WhyJapan() {
                 <div className="absolute left-0 top-1/2 hidden h-14 w-px -translate-y-1/2 bg-border sm:block" />
               )}
               <p className="font-serif text-4xl font-light text-primary md:text-5xl">{stat.value}</p>
-              <p className="mt-1 text-sm font-semibold text-foreground">{stat.label}</p>
+              <p className="mt-3 text-sm font-semibold text-foreground">{stat.label}</p>
               <p className="mt-0.5 text-xs text-muted-foreground">{stat.sub}</p>
             </div>
           ))}
@@ -41,14 +41,13 @@ export function WhyJapan() {
             </h3>
             <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                Japan is one of the most spiritually unreached nations on earth. With less than 1% of
-                the population identifying as Christian and only 0.5% as evangelical, the vast majority
-                of Japanese people have never heard the gospel — not rejected it, but simply never
-                encountered it.
+                Japan is one of the most spiritually unreached nations on earth. With <span className="font-medium text-foreground italic">less than 1%</span> of
+                the population identifying as Christian and only 0.5% as evangelical, <span className="font-medium text-foreground italic">the vast majority
+                of Japanese people have never heard the gospel.</span> This means that many Japenese people haven't rejected the gospel, they simply haven't encountered it.
               </p>
               <p>
-                It is the second largest unreached people group in the world, a nation of 125 million
-                with extraordinary depth of culture, intellect, and longing — and yet so few workers
+                Japan is is the second largest unreached people group in the world, a nation of 125 million
+                with extraordinary depth of culture, intellect, and longing — and yet such few workers
                 in the harvest field.
               </p>
             </div>
@@ -57,20 +56,18 @@ export function WhyJapan() {
           {/* The Hope */}
           <div className="space-y-4">
             <h3 className="font-serif text-xl font-light text-foreground">
-              But There Is So Much Hope
+              But... There Is So Much Hope
             </h3>
             <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                What excites me most is what God is already doing. Friends of mine who have been
-                serving in Japan for two years now tell me about university students who are
-                <span className="font-medium text-foreground italic"> on fire for God </span>
-                — newly evangelized students so hungry to know Jesus that they can&apos;t help but
-                share Him with their friends.
+                A friend of mine who has been serving in Japan for two years recently told me, <span className="font-medium text-foreground italic">"Jess, you're coming 
+                at a really ripe time </span>where our students recently caught the vision of evanglizing and sharing the Gospel to their
+                friends, but they don't know how to. A lot of them are looking to be discipled and most importantly,
+                to co-labor with missionaries to share Christ with their friends."
               </p>
               <p>
-                The harvest is real. The laborers are few. And I believe God is calling more workers
-                into this field — to come alongside a generation of Japanese students who are just
-                beginning to discover who Jesus is.
+                The harvest is real. The laborers are few. I praise God for 1) giving me the desire for the nations and
+                2) that He is the one who goes before me and is with me always, to the end of the age.
               </p>
             </div>
           </div>

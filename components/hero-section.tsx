@@ -48,7 +48,7 @@ export function HeroSection() {
 
                 {/* Subtitle */}
                 <p className="mb-10 max-w-xl text-lg font-light leading-relaxed text-white/85 drop-shadow md:text-xl">
-                    Going where less than 0.5% know the name of Jesus
+                    Going where less than 1% know the name of Jesus
                 </p>
 
                 {/* Buttons — matched width, pill shape */}
