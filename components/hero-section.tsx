@@ -56,7 +56,7 @@ export function HeroSection() {
                     <Button
                         size="lg"
                         className="min-w-[180px] rounded-full bg-primary px-8 text-sm font-semibold shadow-lg transition-all duration-200 cursor-pointer hover:bg-primary/90 hover:scale-105 hover:shadow-xl active:scale-95"
-                        onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('partner')?.scrollIntoView({ behavior: 'smooth' })}
                     >
                         Partner With Me
                     </Button>

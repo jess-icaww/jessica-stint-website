@@ -21,9 +21,9 @@ export default function Home() {
       <section id="why-japan">
         <WhyJapan />
       </section>
-      <section id="impact">
+      {/* <section id="impact">
         <StudentImpact />
-      </section>
+      </section> */}
       <HowToPartner />
       <section id="updates">
         <LatestUpdates />

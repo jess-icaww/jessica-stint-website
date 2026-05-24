@@ -7,8 +7,9 @@ const partnerWays = [
         title: "Pray",
         description:
             "Commit to praying regularly for Japan, for students to encounter Jesus, and for my team and I.",
-        cta: "Join Prayer Team",
-        href: "#prayer"
+        cta: "View Prayer Requests",
+        href: "#prayer",
+        newTab: false
     },
     {
         icon: CircleDollarSign,
@@ -17,7 +18,8 @@ const partnerWays = [
             "Partner financially to cover living expenses, ministry costs, and support local outreach events.",
         cta: "Give Monthly/One-Time",
         primary: true,
-        href: "#donate"
+        href: "#donate",
+        newTab: false
     },
     {
         icon: Mail,
@@ -25,13 +27,14 @@ const partnerWays = [
         description:
             "Receive monthly updates, prayer requests, and stories from the field straight to your inbox.",
         cta: "Subscribe",
-        href: "https://forms.gle/Uy4F8NMQYSr3Djgu8"
+        href: "https://forms.gle/Uy4F8NMQYSr3Djgu8",
+        newTab: true
     }
 ]
 
 export function HowToPartner() {
     return (
-        <section className="bg-secondary/50 py-24 md:py-32">
+        <section className="bg-secondary/50 py-24 md:py-32" id="partner">
             <div className="container mx-auto max-w-6xl px-4">
                 <div className="mb-16 text-center">
                     <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
@@ -86,7 +89,12 @@ export function HowToPartner() {
                                 asChild={!!way.href}
                             >
                                 {way.href ? (
-                                    <a href={way.href} target="_blank" rel="noopener noreferrer">{way.cta}</a>
+                                    <a href={way.href}
+                                        target={way.newTab ? "_blank" : "_self"}
+                                        rel={way.newTab ? "noopener noreferrer" : undefined}
+                                    >
+                                        {way.cta}
+                                    </a>
                                 ) : (
                                     way.cta
                                 )}
