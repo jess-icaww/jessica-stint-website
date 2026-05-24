@@ -36,7 +36,7 @@ const prayerRequests = [
 
 export function PrayerRequests() {
   return (
-    <section className="bg-secondary/50 py-24 md:py-32">
+    <section className="bg-secondary/50 py-24 md:py-32" id="prayer">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="mb-16 text-center">
           <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
