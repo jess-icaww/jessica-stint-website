@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { UpdatesNavigation } from "@/components/updates-navigation"
 import { Footer } from "@/components/footer"
+import { NewsletterForm } from "@/components/newsletter-form"
 import { client } from "@/lib/sanity"
 
 async function getUpdates() {
@@ -177,16 +178,7 @@ export default async function UpdatesPage() {
             Subscribe to receive monthly updates, prayer requests, and stories
             from my journey in Japan.
           </p>
-          <form className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="h-11 rounded-md border border-input bg-background px-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring sm:w-72"
-            />
-            <Button type="submit">
-              Subscribe
-            </Button>
-          </form>
+          <NewsletterForm />
         </div>
       </section>
 
