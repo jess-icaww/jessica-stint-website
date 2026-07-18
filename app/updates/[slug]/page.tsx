@@ -1,7 +1,7 @@
 import { client } from "@/lib/sanity"
 import { PortableText } from "@portabletext/react"
 import { CalendarDays } from "lucide-react"
-import { UpdatesNavigation } from "@/components/updates-navigation"
+import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 
 async function getUpdate(slug: string) {
@@ -23,7 +23,7 @@ export default async function UpdatePage({ params }: { params: { slug: string } 
 
   return (
     <main className="min-h-screen bg-background">
-      <UpdatesNavigation />
+      <Navigation />
       <article className="container mx-auto max-w-3xl px-4 pt-28 pb-20 md:pt-36">
         <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
           <CalendarDays className="h-4 w-4" />

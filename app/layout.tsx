@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Called to Japan | Support Sarah&apos;s Mission',
-  description: 'Join Sarah on her one-year campus ministry journey to Japan. Partner through prayer and giving to share hope with Japanese university students.',
+  title: 'Called to Japan | Support Jessica&apos;s Mission',
+  description: 'Join Jessica on her one-year campus ministry journey to Japan. Partner through prayer and giving to share hope with Japanese university students.',
   generator: 'v0.app',
   icons: {
     icon: [

@@ -27,7 +27,7 @@ export function VideoSection() {
             <>
               <img
                 src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=1200&q=80"
-                alt="Video thumbnail - Sarah sharing her story"
+                alt="Video thumbnail - Jessica sharing her story"
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/30">

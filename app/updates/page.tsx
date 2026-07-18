@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { CalendarDays, ArrowRight, BookOpen } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { UpdatesNavigation } from "@/components/updates-navigation"
+import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { NewsletterForm } from "@/components/newsletter-form"
 import { client } from "@/lib/sanity"
@@ -32,7 +32,7 @@ export default async function UpdatesPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <UpdatesNavigation />
+      <Navigation />
 
       {/* Hero Header */}
       <section className="bg-secondary pt-28 pb-16 md:pt-36 md:pb-20">

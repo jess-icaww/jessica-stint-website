@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { GalleryNavigation } from "@/components/gallery-navigation"
+import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Play, X, ChevronLeft, ChevronRight, MapPin, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -197,7 +197,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <GalleryNavigation />
+      <Navigation />
 
       {/* Hero Section */}
       <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden pt-16">

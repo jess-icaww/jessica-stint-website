@@ -4,48 +4,51 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const navLinks = [
-
+  { label: "Home", href: "/" },
   { label: "Updates", href: "/updates" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Prayer", href: "#prayer" },
+  { label: "Prayer", href: "/#prayer" },
+  { label: "Give", href: "/#donate" },
 ]
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+
+  function isActive(href: string) {
+    if (href.includes("#")) return false
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <a href="#" className="font-serif text-xl font-medium text-foreground">
+        <Link href="/" className="font-serif text-xl font-medium text-foreground">
           Jessica Wong
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            link.href.startsWith("#") ? (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            )
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm font-medium transition-colors ${
+                isActive(link.href)
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {link.label}
+            </Link>
           ))}
           <Button size="sm" className="ml-2" asChild>
-            <a href="#donate">Partner</a>
+            <Link href="/#donate">Partner</Link>
           </Button>
         </div>
 
@@ -68,28 +71,17 @@ export function Navigation() {
         <div className="border-t border-border bg-background md:hidden">
           <div className="container mx-auto flex flex-col gap-4 px-4 py-6">
             {navLinks.map((link) => (
-              link.href.startsWith("#") ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-foreground"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-foreground"
-                >
-                  {link.label}
-                </Link>
-              )
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-base font-medium text-foreground"
+              >
+                {link.label}
+              </Link>
             ))}
             <Button className="mt-2 w-full" asChild>
-              <a href="#donate">Partner</a>
+              <Link href="/#donate">Partner</Link>
             </Button>
           </div>
         </div>
