@@ -16,7 +16,7 @@ export function WhyJapan() {
         {/* Stats row */}
         <div className="mb-16 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-y-0">
           {[
-            { value: "0.5%",       label: "Evangelical Christians",  sub: "in a nation of 125 million" },
+            { value: "<1%",       label: "Christians",  sub: "in a nation of 125 million" },
             { value: "2nd",        label: "Largest Unreached Nation", sub: "in the world" },
             { value: "2.6 Million",   label: "University Students",      sub: "in Tokyo alone" },
           ].map((stat, i) => (

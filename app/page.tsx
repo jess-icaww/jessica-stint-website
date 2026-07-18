@@ -7,7 +7,6 @@ import { VideoSection } from "@/components/video-section"
 import { HowToPartner } from "@/components/how-to-partner"
 import { LatestUpdates } from "@/components/latest-updates"
 import { PrayerRequests } from "@/components/prayer-requests"
-import { DonationCTA } from "@/components/donation-cta"
 import { Footer } from "@/components/footer"
 import { AboutMe } from "@/components/about-me"
 
@@ -31,7 +30,6 @@ export default function Home() {
       <section id="prayer">
         <PrayerRequests />
       </section>
-      <DonationCTA />
       <Footer />
     </main>
   )

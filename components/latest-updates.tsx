@@ -1,32 +1,23 @@
 import { Badge } from "@/components/ui/badge"
 import { CalendarDays } from "lucide-react"
 import Link from "next/link"
+import { client } from "@/lib/sanity"
 
-const updates = [
-  {
-    date: "May 15, 2026",
-    title: "Support Raising Update",
-    excerpt:
-      "Praise God! We&apos;ve reached 65% of our monthly support goal. Thank you to everyone who has partnered with this mission so far.",
-    tag: "Fundraising",
-  },
-  {
-    date: "May 8, 2026",
-    title: "Visa Application Submitted",
-    excerpt:
-      "After months of paperwork, my visa application is finally submitted! Please pray it gets approved quickly.",
-    tag: "Logistics",
-  },
-  {
-    date: "April 28, 2026",
-    title: "Japanese Language Progress",
-    excerpt:
-      "Finished my first semester of intensive Japanese study! I can now hold basic conversations and read hiragana and katakana.",
-    tag: "Training",
-  },
-]
+async function getRecentUpdates() {
+  return client.fetch(`
+    *[_type == "update"] | order(date desc)[0...3] {
+      "id": _id,
+      date,
+      title,
+      excerpt,
+      tag
+    }
+  `)
+}
 
-export function LatestUpdates() {
+export async function LatestUpdates() {
+  const preview = await getRecentUpdates()
+
   return (
     <section className="bg-card py-24 md:py-32">
       <div className="container mx-auto max-w-5xl px-4">
@@ -43,14 +34,16 @@ export function LatestUpdates() {
         </div>
 
         <div className="space-y-6">
-          {updates.map((update, index) => (
+          {preview.map((update) => (
             <article
-              key={index}
+              key={update.id}
               className="group flex flex-col gap-4 rounded-lg border border-border bg-background p-6 transition-all hover:border-primary/30 md:flex-row md:items-start md:gap-8"
             >
               <div className="flex items-center gap-2 text-sm text-muted-foreground md:w-36 md:flex-shrink-0">
                 <CalendarDays className="h-4 w-4" />
-                <time>{update.date}</time>
+                <time>
+                  {new Date(update.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                </time>
               </div>
               <div className="flex-1">
                 <div className="mb-2 flex items-center gap-3">
