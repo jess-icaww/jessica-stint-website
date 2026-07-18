@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { HandHeart, Mail, Users2, CircleDollarSign } from "lucide-react"
+import { HandHeart, CircleDollarSign } from "lucide-react"
 
 const partnerWays = [
     {
@@ -20,15 +20,6 @@ const partnerWays = [
         primary: true,
         href: "#donate",
         newTab: false
-    },
-    {
-        icon: Mail,
-        title: "Stay Connected",
-        description:
-            "Receive monthly updates, prayer requests, and stories from the field straight to your inbox.",
-        cta: "Subscribe",
-        href: "https://forms.gle/Uy4F8NMQYSr3Djgu8",
-        newTab: true
     }
 ]
 
@@ -48,7 +39,7 @@ export function HowToPartner() {
                     </p>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="mx-auto grid max-w-2xl gap-6 sm:grid-cols-2">
                     {partnerWays.map((way, index) => (
                         <div
                             key={index}

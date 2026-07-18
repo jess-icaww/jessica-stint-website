@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { SubscribeDialog } from "@/components/subscribe-dialog"
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -47,7 +48,14 @@ export function Navigation() {
               {link.label}
             </Link>
           ))}
-          <Button size="sm" className="ml-2" asChild>
+          <SubscribeDialog
+            trigger={
+              <Button size="sm" variant="outline" className="ml-2">
+                Subscribe
+              </Button>
+            }
+          />
+          <Button size="sm" asChild>
             <Link href="/#donate">Partner</Link>
           </Button>
         </div>
@@ -80,7 +88,14 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Button className="mt-2 w-full" asChild>
+            <SubscribeDialog
+              trigger={
+                <Button variant="outline" className="mt-2 w-full">
+                  Subscribe
+                </Button>
+              }
+            />
+            <Button className="w-full" asChild>
               <Link href="/#donate">Partner</Link>
             </Button>
           </div>
