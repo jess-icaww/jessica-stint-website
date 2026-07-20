@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CalendarDays, ArrowRight, BookOpen, Download } from "lucide-react"
+import { CalendarDays, ArrowRight, BookOpen, Download, Newspaper } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
@@ -58,12 +58,18 @@ export default async function UpdatesPage() {
             <Card className="overflow-hidden border-0 shadow-lg">
               <div className="grid md:grid-cols-2">
                 <div className="relative aspect-[4/3] md:aspect-auto">
-                  <Image
-                    src={featuredUpdate.image}
-                    alt={featuredUpdate.title}
-                    fill
-                    className="object-cover"
-                  />
+                  {featuredUpdate.image ? (
+                    <Image
+                      src={featuredUpdate.image}
+                      alt={featuredUpdate.title}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-secondary">
+                      <Newspaper className="h-12 w-12 text-muted-foreground" />
+                    </div>
+                  )}
                   <Badge className="absolute left-4 top-4 bg-primary text-primary-foreground">
                     Latest Update
                   </Badge>
@@ -128,12 +134,18 @@ export default async function UpdatesPage() {
                 className="group overflow-hidden border border-border transition-all hover:border-primary/30 hover:shadow-lg"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={update.image}
-                    alt={update.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {update.image ? (
+                    <Image
+                      src={update.image}
+                      alt={update.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-secondary">
+                      <Newspaper className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <Badge
                     variant="secondary"
