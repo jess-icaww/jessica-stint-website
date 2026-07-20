@@ -26,13 +26,8 @@ export function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="#updates" className="hover:text-primary-foreground transition-colors">
+                                <a href="/updates" className="hover:text-primary-foreground transition-colors">
                                     Latest Updates
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#prayer" className="hover:text-primary-foreground transition-colors">
-                                    Prayer Requests
                                 </a>
                             </li>
                             <li>
