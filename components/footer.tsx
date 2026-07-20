@@ -31,7 +31,12 @@ export function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://app.aplos.com/aws/give/SoonMovementGlobal/JessicaWong" target="_blank" className="hover:text-primary-foreground transition-colors">
+                                <a href="/gallery" className="hover:text-primary-foreground transition-colors">
+                                    Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://app.aplos.com/aws/give/SoonMovementGlobal/JessicaWong" target="_blank" rel="noopener noreferrer" className="hover:text-primary-foreground transition-colors">
                                     Give Now
                                 </a>
                             </li>
