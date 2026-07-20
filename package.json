@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@next/swc-darwin-arm64": "15.5.18",
     "@notionhq/client": "^5.22.0",
     "@portabletext/react": "^6.2.0",
     "@radix-ui/react-accordion": "1.2.2",
@@ -70,7 +71,6 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@next/swc-darwin-arm64": "^16.2.9",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^19",

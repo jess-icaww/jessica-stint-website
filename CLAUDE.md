@@ -28,7 +28,7 @@ npm run start    # run production build
 npm run lint     # eslint
 ```
 
-There is no test suite configured in this repo. Package manager is **npm** — a `pnpm-lock.yaml` exists but is an empty stub; use `package-lock.json`/npm for installs.
+There is no test suite configured in this repo. Package manager is **npm** — use `package-lock.json`/npm for installs. Don't add a `pnpm-lock.yaml`, even an empty/stub one: Next.js's SWC-binary auto-repair logic detects it and tries to shell out to `pnpm` to patch the lockfile, which fails hard if `pnpm` isn't actually installed (this broke `next dev` once already).
 
 ### Environment variables
 
