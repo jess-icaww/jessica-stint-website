@@ -13,8 +13,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Called to Japan | Support Jessica&apos;s Mission',
-  description: 'Join Jessica on her one-year campus ministry journey to Japan. Partner through prayer and giving to share hope with Japanese university students.',
+  title: "Jessica in Japan | A Year-Long Mission Journal",
+  description:
+    "Walk alongside Jessica through her one-year mission in Tokyo, Japan. Read her latest letters, follow ministry updates, and see everyday life on the field.",
   generator: 'v0.app',
   icons: {
     icon: [
@@ -41,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang="en" className="scroll-smooth bg-background">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
