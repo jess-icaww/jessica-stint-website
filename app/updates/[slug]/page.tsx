@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
+import { PdfViewer } from "@/components/pdf-viewer-loader"
 
 async function getUpdate(slug: string) {
   return client.fetch(
@@ -44,12 +45,18 @@ export default async function UpdatePage({ params }: { params: Promise<{ slug: s
         )}
 
         {update.fileUrl && (
-          <a href={update.fileUrl} target="_blank" rel="noopener noreferrer" className="mb-8 inline-block">
-            <Button variant="outline">
+          <div className="mb-8">
+            <PdfViewer url={update.fileUrl} />
+            <a
+              href={update.fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary"
+            >
               <Download className="mr-2 h-4 w-4" />
-              Download Full Newsletter (PDF)
-            </Button>
-          </a>
+              Download the PDF
+            </a>
+          </div>
         )}
 
         {update.body && (
