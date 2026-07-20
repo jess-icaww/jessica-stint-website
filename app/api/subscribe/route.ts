@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { z } from "zod"
 import { sql } from "@/lib/db"
+import { addSubscriberToMailchimp } from "@/lib/mailchimp"
 
 const subscribeSchema = z.object({
   email: z.string().trim().toLowerCase().email(),
@@ -18,6 +19,7 @@ export async function POST(request: Request) {
   }
 
   const { email } = parsed.data
+  let alreadySubscribed = false
 
   try {
     await sql`
@@ -26,14 +28,22 @@ export async function POST(request: Request) {
     `
   } catch (error: any) {
     if (error.code === "23505") {
-      return NextResponse.json({ message: "You're already subscribed!" })
+      alreadySubscribed = true
+    } else {
+      console.error("Failed to insert subscriber:", error)
+      return NextResponse.json(
+        { error: "Something went wrong. Please try again." },
+        { status: 500 }
+      )
     }
-    console.error("Failed to insert subscriber:", error)
-    return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
-      { status: 500 }
-    )
   }
 
-  return NextResponse.json({ message: "You're subscribed!" })
+  const mailchimpResult = await addSubscriberToMailchimp(email)
+  if (!mailchimpResult.ok) {
+    console.error("Subscriber saved locally but Mailchimp sync failed for:", email)
+  }
+
+  return NextResponse.json({
+    message: alreadySubscribed ? "You're already subscribed!" : "You're subscribed!",
+  })
 }
