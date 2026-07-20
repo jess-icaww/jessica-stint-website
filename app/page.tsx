@@ -28,9 +28,6 @@ export default function Home() {
         <MinistryTokyo />
       </Reveal>
       <Reveal>
-        <JourneyTimeline />
-      </Reveal>
-      <Reveal>
         <HomeGallery />
       </Reveal>
       <Reveal>
