@@ -91,58 +91,60 @@ export function AboutMe() {
               </Reveal>
             ))}
 
-            {/* Asia Minor — the turning point, featured */}
+            {/* Asia Minor — the turning point */}
             <Reveal>
-              <div className="relative">
-                <div className="absolute left-0 top-0 z-10 md:left-1/2 md:-translate-x-1/2">
+              <div className="relative md:grid md:grid-cols-2 md:items-center md:gap-14">
+                {/* Stamp marker */}
+                <div className="absolute left-0 top-0 z-10 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
                   <StampBadge year="2025" featured />
                 </div>
 
-                <div className="ml-20 overflow-hidden rounded-sm md:ml-0">
-                  <div className="relative">
+                {/* Image */}
+                <div>
+                  <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/journey-asia-minor.png"
                       alt="Ancient ruins and marble columns in Asia Minor at golden hour"
-                      className="h-[420px] w-full object-cover md:h-[560px]"
+                      className="aspect-[4/3] w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
-                      <p className="text-xs font-medium uppercase tracking-[0.25em] text-background/80">
-                        Asia Minor · The Turning Point
-                      </p>
-                      <h3 className="mt-3 max-w-2xl font-serif text-3xl font-light leading-snug text-background text-balance md:text-4xl">
-                        God showed me His call reaches every nation — and invited me into it.
-                      </h3>
-                    </div>
                   </div>
                 </div>
 
-                {/* Scripture callouts */}
-                <div className="ml-20 mt-10 grid gap-6 md:ml-0 md:grid-cols-2 md:gap-10">
-                  <blockquote className="border-l border-accent pl-6">
-                    <p className="font-serif text-xl font-light italic leading-snug text-foreground text-pretty">
-                      &ldquo;You will be my witnesses... to the ends of the earth.&rdquo;
-                    </p>
-                    <cite className="mt-3 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
-                      Acts 1:8
-                    </cite>
-                  </blockquote>
-                  <blockquote className="border-l border-accent pl-6">
-                    <p className="font-serif text-xl font-light italic leading-snug text-foreground text-pretty">
-                      &ldquo;Go therefore and make disciples of all nations...&rdquo;
-                    </p>
-                    <cite className="mt-3 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
-                      Matthew 28:19
-                    </cite>
-                  </blockquote>
-                </div>
+                {/* Text */}
+                <div className="ml-20 mt-6 md:ml-0 md:mt-0">
+                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
+                    Asia Minor · The Turning Point
+                  </p>
+                  <h3 className="mt-3 font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
+                    God showed me His call reaches every nation — and invited me into it.
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+                    Sitting in a land where the early church once carried the gospel, I was convicted in a
+                    fresh way. I became increasingly certain that God&apos;s heart is for every nation to hear
+                    of Him.
+                  </p>
 
-                <p className="ml-20 mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground text-pretty md:ml-0">
-                  Sitting with these words in a land where the early church once carried the gospel, I was
-                  convicted in a fresh way. I became increasingly certain that God&apos;s heart is for every
-                  nation to hear of Him.
-                </p>
+                  {/* Scripture callouts */}
+                  <div className="mt-6 space-y-5">
+                    <blockquote className="border-l border-accent pl-5">
+                      <p className="font-serif text-lg font-light italic leading-snug text-foreground text-pretty">
+                        &ldquo;You will be my witnesses... to the ends of the earth.&rdquo;
+                      </p>
+                      <cite className="mt-2 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+                        Acts 1:8
+                      </cite>
+                    </blockquote>
+                    <blockquote className="border-l border-accent pl-5">
+                      <p className="font-serif text-lg font-light italic leading-snug text-foreground text-pretty">
+                        &ldquo;Go therefore and make disciples of all nations...&rdquo;
+                      </p>
+                      <cite className="mt-2 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+                        Matthew 28:19
+                      </cite>
+                    </blockquote>
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>
