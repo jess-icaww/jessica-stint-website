@@ -1,12 +1,12 @@
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CalendarDays, ArrowRight, BookOpen, Download, Newspaper } from "lucide-react"
+import { CalendarDays, ArrowRight, BookOpen, Download } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { NewsletterForm } from "@/components/newsletter-form"
+import { Reveal } from "@/components/reveal"
 import { client } from "@/lib/sanity"
 
 async function getUpdates() {
@@ -26,195 +26,191 @@ async function getUpdates() {
   `)
 }
 
+function formatDate(date: string) {
+  const parsed = new Date(date)
+  if (Number.isNaN(parsed.getTime())) return date
+  return parsed.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+}
+
 export default async function UpdatesPage() {
   const updates = await getUpdates()
-  const featuredUpdate = updates.find((u) => u.featured)
-  const regularUpdates = updates.filter((u) => !u.featured)
+  const featuredUpdate = updates.find((u) => u.featured) ?? updates[0]
+  const regularUpdates = updates.filter((u) => u.id !== featuredUpdate?.id)
 
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Hero Header */}
-      <section className="bg-secondary pt-28 pb-16 md:pt-36 md:pb-20">
-        <div className="container mx-auto max-w-5xl px-4 text-center">
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            Journey Updates
+      {/* Photo header */}
+      <section className="relative flex min-h-[62vh] items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/why-japan.png"
+            alt="A quiet Tokyo neighborhood street"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-foreground/40 to-foreground/75" />
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-16 pt-32 md:pb-20">
+          <span className="mb-5 inline-block text-xs font-medium uppercase tracking-[0.35em] text-background/70">
+            Letters from the field
           </span>
-          <h1 className="mb-4 font-serif text-4xl font-light text-foreground md:text-5xl lg:text-6xl text-balance">
-            Monthly Updates
+          <h1 className="max-w-3xl font-serif text-5xl font-light leading-[1.05] text-balance text-background drop-shadow-sm md:text-6xl">
+            Updates from Tokyo
           </h1>
-          <p className="mx-auto max-w-xl text-muted-foreground text-lg">
-            Follow along as I prepare for and embark on this mission to share hope
-            with university students in Japan.
+          <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-background/85">
+            {
+              "Monthly letters from the journey — the students I'm meeting, answered prayers, honest struggles, and the small everyday moments in between."
+            }
           </p>
         </div>
       </section>
 
-      {/* Featured Update */}
+      {/* Featured letter */}
       {featuredUpdate && (
-        <section className="py-16 md:py-20">
-          <div className="container mx-auto max-w-6xl px-4">
-            <Card className="overflow-hidden border-0 shadow-lg">
-              <div className="grid md:grid-cols-2">
-                <div className="relative aspect-[4/3] md:aspect-auto">
+        <section className="py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <Link
+                href={`/updates/${featuredUpdate.slug}`}
+                className="group grid overflow-hidden rounded-sm border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl md:grid-cols-2"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden md:aspect-auto md:min-h-[28rem]">
                   {featuredUpdate.image ? (
                     <Image
-                      src={featuredUpdate.image}
+                      src={featuredUpdate.image || "/placeholder.svg"}
                       alt={featuredUpdate.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-secondary">
-                      <Newspaper className="h-12 w-12 text-muted-foreground" />
-                    </div>
+                    <Image
+                      src="/images/gallery-coffee.png"
+                      alt={featuredUpdate.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   )}
-                  <Badge className="absolute left-4 top-4 bg-primary text-primary-foreground">
-                    Latest Update
-                  </Badge>
+                  <span className="absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 text-xs font-medium uppercase tracking-widest text-foreground backdrop-blur-sm">
+                    Latest letter
+                  </span>
                 </div>
-                <CardContent className="flex flex-col justify-center p-8 md:p-12">
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CalendarDays className="h-4 w-4" />
-                      <time>{featuredUpdate.date}</time>
-                    </div>
-                    <Badge variant="secondary">{featuredUpdate.tag}</Badge>
+                <div className="flex flex-col justify-center gap-5 p-8 md:p-14">
+                  <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                    <span className="flex items-center gap-1.5">
+                      <CalendarDays className="h-3.5 w-3.5" />
+                      {formatDate(featuredUpdate.date)}
+                    </span>
+                    {featuredUpdate.tag && <span className="h-1 w-1 rounded-full bg-accent" />}
+                    {featuredUpdate.tag && <span>{featuredUpdate.tag}</span>}
                   </div>
-                  <h2 className="mb-4 font-serif text-2xl font-medium text-foreground md:text-3xl">
+                  <h2 className="font-serif text-3xl font-light leading-tight text-balance text-foreground md:text-4xl">
                     {featuredUpdate.title}
                   </h2>
-                  <p className="mb-6 text-muted-foreground leading-relaxed">
+                  <p className="text-lg leading-relaxed text-muted-foreground line-clamp-4">
                     {featuredUpdate.excerpt}
                   </p>
 
-                  {/* Prayer Snippet */}
-                  <div className="mb-6 rounded-lg bg-primary/5 border border-primary/10 p-4">
-                    <p className="text-sm font-medium text-primary flex items-start gap-2">
-                      <BookOpen className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                  {featuredUpdate.prayerSnippet && (
+                    <p className="flex items-start gap-2 border-l-2 border-primary/30 pl-4 font-serif text-base italic text-muted-foreground">
+                      <BookOpen className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
                       <span>{featuredUpdate.prayerSnippet}</span>
                     </p>
-                  </div>
+                  )}
 
-                  <div className="flex flex-wrap gap-3">
-                    <Link href={`/updates/${featuredUpdate.slug}`}>
-                      <Button className="w-fit group">
-                        Read Full Update
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </Link>
+                  <div className="mt-2 flex flex-wrap items-center gap-5">
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary">
+                      Read full letter
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
                     {featuredUpdate.fileUrl && (
-                      <a href={featuredUpdate.fileUrl} target="_blank" rel="noopener noreferrer">
-                        <Button variant="outline" className="w-fit">
-                          <Download className="mr-2 h-4 w-4" />
-                          Download PDF
-                        </Button>
-                      </a>
+                      <span className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                        <Download className="h-3.5 w-3.5" />
+                        PDF available
+                      </span>
                     )}
                   </div>
-                </CardContent>
-              </div>
-            </Card>
+                </div>
+              </Link>
+            </Reveal>
           </div>
         </section>
       )}
 
-      {/* Updates Grid */}
-      <section className="bg-card py-16 md:py-20">
-        <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="mb-10 font-serif text-2xl font-light text-foreground md:text-3xl">
-            Previous Updates
-          </h2>
+      {/* Archive */}
+      {regularUpdates.length > 0 && (
+        <section className="bg-secondary/50 py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-6">
+            <Reveal>
+              <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
+                The archive
+              </span>
+              <h2 className="mb-12 font-serif text-3xl font-light text-foreground md:text-4xl">
+                Earlier letters
+              </h2>
+            </Reveal>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {regularUpdates.map((update) => (
-              <Card
-                key={update.id}
-                className="group overflow-hidden border border-border transition-all hover:border-primary/30 hover:shadow-lg"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  {update.image ? (
-                    <Image
-                      src={update.image}
-                      alt={update.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-secondary">
-                      <Newspaper className="h-10 w-10 text-muted-foreground" />
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <Badge
-                    variant="secondary"
-                    className="absolute bottom-3 left-3 bg-background/90 backdrop-blur-sm"
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              {regularUpdates.map((update, i) => (
+                <Reveal key={update.id} className={i % 3 === 1 ? "sm:mt-8" : ""}>
+                  <Link
+                    href={`/updates/${update.slug}`}
+                    className="group block overflow-hidden rounded-sm border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl"
                   >
-                    {update.tag}
-                  </Badge>
-                </div>
-                <CardContent className="p-5">
-                  <div className="mb-3 flex items-center gap-2 text-xs text-muted-foreground">
-                    <CalendarDays className="h-3.5 w-3.5" />
-                    <time>{new Date(update.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</time>
-                  </div>
-                  <h3 className="mb-2 font-serif text-lg font-medium text-foreground group-hover:text-primary transition-colors">
-                    {update.title}
-                  </h3>
-                  <p className="mb-4 text-sm text-muted-foreground line-clamp-3">
-                    {update.excerpt}
-                  </p>
-
-                  {/* Prayer Snippet */}
-                  <div className="mb-4 rounded-md bg-secondary/50 p-3">
-                    <p className="text-xs text-muted-foreground flex items-start gap-2">
-                      <BookOpen className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-primary" />
-                      <span className="line-clamp-2">{update.prayerSnippet}</span>
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={`/updates/${update.slug}`}
-                      className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-                    >
-                      Read more
-                      <ArrowRight className="ml-1 h-3.5 w-3.5" />
-                    </Link>
-                    {update.fileUrl && (
-                      <a
-                        href={update.fileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-primary"
-                      >
-                        <Download className="h-3.5 w-3.5" />
-                        PDF
-                      </a>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    <div className="relative aspect-[16/11] overflow-hidden">
+                      <Image
+                        src={update.image || "/images/gallery-park.png"}
+                        alt={update.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-3 p-6">
+                      <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                        <CalendarDays className="h-3.5 w-3.5" />
+                        <time>{formatDate(update.date)}</time>
+                        {update.tag && <span className="h-1 w-1 rounded-full bg-accent" />}
+                        {update.tag && <span>{update.tag}</span>}
+                      </div>
+                      <h3 className="font-serif text-xl font-light leading-snug text-foreground transition-colors group-hover:text-primary">
+                        {update.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                        {update.excerpt}
+                      </p>
+                      <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                        Read more
+                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Newsletter CTA */}
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto max-w-2xl px-4 text-center">
-          <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-            Stay Connected
-          </span>
-          <h2 className="mb-4 font-serif text-2xl font-light text-foreground md:text-3xl">
-            Get Updates in Your Inbox
-          </h2>
-          <p className="mb-8 text-muted-foreground">
-            Subscribe to receive monthly updates, prayer requests, and stories
-            from my journey in Japan.
-          </p>
-          <NewsletterForm />
+      {/* Newsletter invite */}
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <Reveal>
+            <span className="mb-5 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
+              Stay close
+            </span>
+            <h2 className="mb-5 font-serif text-3xl font-light text-foreground md:text-4xl text-balance">
+              Have the letters land in your inbox
+            </h2>
+            <p className="mb-10 text-lg leading-relaxed text-muted-foreground">
+              {
+                "Every month I'll send a new letter — stories, prayer requests, and glimpses of life in Tokyo. I'd love to have you walking alongside me."
+              }
+            </p>
+            <NewsletterForm />
+          </Reveal>
         </div>
       </section>
 
