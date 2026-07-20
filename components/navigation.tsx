@@ -11,8 +11,6 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Updates", href: "/updates" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Prayer", href: "/#prayer" },
-  { label: "Give", href: "/#donate" },
 ]
 
 export function Navigation() {
@@ -50,14 +48,11 @@ export function Navigation() {
           ))}
           <SubscribeDialog
             trigger={
-              <Button size="sm" variant="outline" className="ml-2">
+              <Button size="sm" className="ml-2">
                 Subscribe
               </Button>
             }
           />
-          <Button size="sm" asChild>
-            <Link href="/#donate">Partner</Link>
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -90,14 +85,11 @@ export function Navigation() {
             ))}
             <SubscribeDialog
               trigger={
-                <Button variant="outline" className="mt-2 w-full">
+                <Button className="mt-2 w-full">
                   Subscribe
                 </Button>
               }
             />
-            <Button className="w-full" asChild>
-              <Link href="/#donate">Partner</Link>
-            </Button>
           </div>
         </div>
       )}
