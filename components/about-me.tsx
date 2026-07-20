@@ -1,40 +1,201 @@
+import { Reveal } from "@/components/reveal"
+
+type Milestone = {
+  year: string
+  place: string
+  lesson: string
+  body: string
+  image: string
+  alt: string
+}
+
+const milestones: Milestone[] = [
+  {
+    year: "2023",
+    place: "Vietnam",
+    lesson: "God showed me He is at work among the nations.",
+    body: "One of my first times serving cross-culturally. I arrived unsure of what I had to offer, and left having watched God move in places and people I never expected. My eyes were opened to a world far bigger than my own.",
+    image: "/images/journey-vietnam.png",
+    alt: "Mission volunteers laughing with local children and students in Vietnam",
+  },
+  {
+    year: "2024",
+    place: "Japan",
+    lesson: "God showed me the joy of sharing the gospel across cultures.",
+    body: "This is where my heart broke open. Sharing the gospel, serving students, sitting in long conversations over coffee — I saw God soften hearts and I felt more alive in His work than I ever had. Japan didn't leave me after I flew home.",
+    image: "/images/journey-japan-2024.png",
+    alt: "Young woman talking with Japanese university students in a park",
+  },
+]
+
 export function AboutMe() {
   return (
-    <section id="story" className="scroll-mt-16 bg-background py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-6">
-        <span className="mb-8 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
-          My Story
-        </span>
+    <section id="story" className="scroll-mt-16 overflow-hidden bg-background py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* Header */}
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="mb-6 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
+              My Story
+            </span>
+            <h2 className="font-serif text-4xl font-light leading-tight text-foreground text-balance md:text-5xl">
+              How God Led Me Here
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              This was never about choosing a country. Looking back over three summers, I can see how God
+              patiently expanded my heart for His mission — one step at a time.
+            </p>
+          </div>
+        </Reveal>
 
-        {/* Opening scripture, set like a journal epigraph */}
-        <blockquote className="mb-14 border-l border-accent pl-6">
-          <p className="font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
-            &ldquo;I count everything as loss because of the surpassing worth of knowing Christ Jesus my
-            Lord.&rdquo;
-          </p>
-          <cite className="mt-4 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
-            Philippians 3:8
-          </cite>
-        </blockquote>
+        {/* Timeline */}
+        <div className="relative mt-20 md:mt-28">
+          {/* Route line */}
+          <div
+            aria-hidden="true"
+            className="absolute left-[27px] top-2 bottom-2 w-px border-l border-dashed border-border md:left-1/2 md:-translate-x-1/2"
+          />
 
-        <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-          <p>
-            Hi, I&apos;m Jess &mdash; a 22-year-old recent Computer Science graduate. With many of my peers
-            stepping into full-time jobs, it&apos;s easy to compare myself and feel &ldquo;behind.&rdquo;
-          </p>
-          <p className="font-serif text-xl font-light italic leading-relaxed text-foreground">
-            Yet the Lord reminds me that my ultimate goal is not to pursue money or climb the career ladder
-            &mdash; it is to glorify and enjoy Him forever.
-          </p>
-          <p>
-            As I commit this next year to seek and serve Him in Japan, my prayer is that it wouldn&apos;t
-            just be this one year I dedicate to Him &mdash; but that I would be a true worshipper, lover, and
-            follower of Christ all the days of my life, until I see Him face to face.
-          </p>
+          <div className="space-y-20 md:space-y-32">
+            {milestones.map((m, i) => (
+              <Reveal key={m.year}>
+                <div className="relative md:grid md:grid-cols-2 md:items-center md:gap-14">
+                  {/* Stamp marker */}
+                  <div className="absolute left-0 top-0 z-10 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+                    <StampBadge year={m.year} />
+                  </div>
+
+                  {/* Image */}
+                  <div className={i % 2 === 1 ? "md:order-2 md:col-start-2" : ""}>
+                    <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={m.image || "/placeholder.svg"}
+                        alt={m.alt}
+                        className="aspect-[4/3] w-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Text */}
+                  <div className={`ml-20 mt-6 md:ml-0 md:mt-0 ${i % 2 === 1 ? "md:order-1 md:col-start-1 md:text-right" : ""}`}>
+                    <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
+                      {m.place}
+                    </p>
+                    <h3 className="mt-3 font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
+                      {m.lesson}
+                    </h3>
+                    <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{m.body}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+
+            {/* Asia Minor — the turning point, featured */}
+            <Reveal>
+              <div className="relative">
+                <div className="absolute left-0 top-0 z-10 md:left-1/2 md:-translate-x-1/2">
+                  <StampBadge year="2025" featured />
+                </div>
+
+                <div className="ml-20 overflow-hidden rounded-sm md:ml-0">
+                  <div className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/journey-asia-minor.png"
+                      alt="Ancient ruins and marble columns in Asia Minor at golden hour"
+                      className="h-[420px] w-full object-cover md:h-[560px]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-8 md:p-14">
+                      <p className="text-xs font-medium uppercase tracking-[0.25em] text-background/80">
+                        Asia Minor · The Turning Point
+                      </p>
+                      <h3 className="mt-3 max-w-2xl font-serif text-3xl font-light leading-snug text-background text-balance md:text-4xl">
+                        God showed me His call reaches every nation — and invited me into it.
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Scripture callouts */}
+                <div className="ml-20 mt-10 grid gap-6 md:ml-0 md:grid-cols-2 md:gap-10">
+                  <blockquote className="border-l border-accent pl-6">
+                    <p className="font-serif text-xl font-light italic leading-snug text-foreground text-pretty">
+                      &ldquo;You will be my witnesses... to the ends of the earth.&rdquo;
+                    </p>
+                    <cite className="mt-3 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+                      Acts 1:8
+                    </cite>
+                  </blockquote>
+                  <blockquote className="border-l border-accent pl-6">
+                    <p className="font-serif text-xl font-light italic leading-snug text-foreground text-pretty">
+                      &ldquo;Go therefore and make disciples of all nations...&rdquo;
+                    </p>
+                    <cite className="mt-3 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+                      Matthew 28:19
+                    </cite>
+                  </blockquote>
+                </div>
+
+                <p className="ml-20 mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground text-pretty md:ml-0">
+                  Sitting with these words in a land where the early church once carried the gospel, I was
+                  convicted in a fresh way. I became increasingly certain that God&apos;s heart is for every
+                  nation to hear of Him.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
 
-        <p className="mt-14 font-serif text-2xl font-light italic text-foreground">— Jessica</p>
+        {/* My Response — the climax */}
+        <Reveal>
+          <div className="mx-auto mt-24 max-w-2xl text-center md:mt-32">
+            <span className="mb-6 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
+              My Response
+            </span>
+            <p className="font-serif text-2xl font-light leading-relaxed text-foreground text-balance md:text-3xl">
+              As I reflected on these three summers, I realized God wasn&apos;t simply inviting me on another
+              trip — He was inviting me to surrender my plans to His mission.
+            </p>
+            <p className="mt-12 font-serif text-4xl font-light italic text-primary text-balance md:text-5xl">
+              &ldquo;Here I am. Send me.&rdquo;
+            </p>
+            <cite className="mt-4 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+              Isaiah 6:8
+            </cite>
+          </div>
+        </Reveal>
+
+        {/* Today */}
+        <Reveal>
+          <div className="mx-auto mt-24 max-w-2xl border-t border-border pt-16 text-center md:mt-28">
+            <span className="mb-6 inline-block text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
+              Today
+            </span>
+            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
+              And so this next chapter begins — a full year in Tokyo, serving university students and sharing
+              the hope I&apos;ve found in Christ. Japan isn&apos;t where the story starts. It&apos;s simply
+              where God is leading me next.
+            </p>
+            <p className="mt-10 font-serif text-2xl font-light italic text-foreground">— Jessica</p>
+          </div>
+        </Reveal>
       </div>
     </section>
+  )
+}
+
+function StampBadge({ year, featured = false }: { year: string; featured?: boolean }) {
+  return (
+    <div
+      className={`flex h-14 w-14 -rotate-6 items-center justify-center rounded-full border-2 border-dashed text-xs font-semibold uppercase tracking-wider shadow-sm md:h-16 md:w-16 ${
+        featured
+          ? "border-primary bg-primary text-primary-foreground"
+          : "border-accent bg-card text-accent-foreground"
+      }`}
+    >
+      {year}
+    </div>
   )
 }

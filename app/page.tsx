@@ -4,7 +4,6 @@ import { AboutMe } from "@/components/about-me"
 import { FeaturedNewsletter } from "@/components/featured-newsletter"
 import { WhyJapan } from "@/components/why-japan"
 import { MinistryTokyo } from "@/components/ministry-tokyo"
-import { JourneyTimeline } from "@/components/journey-timeline"
 import { HomeGallery } from "@/components/home-gallery"
 import { StayConnected } from "@/components/stay-connected"
 import { Footer } from "@/components/footer"
@@ -15,9 +14,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
       <HeroSection />
-      <Reveal>
-        <AboutMe />
-      </Reveal>
+      <AboutMe />
       <Reveal>
         <FeaturedNewsletter />
       </Reveal>
