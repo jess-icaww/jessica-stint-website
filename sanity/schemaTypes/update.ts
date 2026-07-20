@@ -38,6 +38,13 @@ export const update = defineType({
             options: { hotspot: true },
         }),
         defineField({
+            name: 'newsletterFile',
+            title: 'Newsletter PDF',
+            description: 'The full newsletter, designed in Canva and exported as a PDF.',
+            type: 'file',
+            options: { accept: 'application/pdf' },
+        }),
+        defineField({
             name: 'tag',
             title: 'Tag',
             type: 'string',
@@ -51,7 +58,8 @@ export const update = defineType({
         }),
         defineField({
             name: 'body',
-            title: 'Body',
+            title: 'Body (optional)',
+            description: 'Optional extra text for the website, on top of the newsletter PDF above. Leave blank if the PDF says everything.',
             type: 'array',
             of: [{ type: 'block' }, { type: 'image' }],
         }),

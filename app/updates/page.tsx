@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CalendarDays, ArrowRight, BookOpen } from "lucide-react"
+import { CalendarDays, ArrowRight, BookOpen, Download } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
@@ -17,6 +17,7 @@ async function getUpdates() {
       title,
       excerpt,
       "image": image.asset->url,
+      "fileUrl": newsletterFile.asset->url,
       tag,
       featured,
       prayerSnippet,
@@ -90,12 +91,22 @@ export default async function UpdatesPage() {
                     </p>
                   </div>
 
-                  <Link href={`/updates/${featuredUpdate.slug}`}>
-                    <Button className="w-fit group">
-                      Read Full Update
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
+                  <div className="flex flex-wrap gap-3">
+                    <Link href={`/updates/${featuredUpdate.slug}`}>
+                      <Button className="w-fit group">
+                        Read Full Update
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </Link>
+                    {featuredUpdate.fileUrl && (
+                      <a href={featuredUpdate.fileUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="w-fit">
+                          <Download className="mr-2 h-4 w-4" />
+                          Download PDF
+                        </Button>
+                      </a>
+                    )}
+                  </div>
                 </CardContent>
               </div>
             </Card>
@@ -151,13 +162,26 @@ export default async function UpdatesPage() {
                     </p>
                   </div>
 
-                  <Link
-                    href={`/updates/${update.slug}`}
-                    className="inline-flex items-center text-sm font-medium text-primary hover:underline"
-                  >
-                    Read more
-                    <ArrowRight className="ml-1 h-3.5 w-3.5" />
-                  </Link>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={`/updates/${update.slug}`}
+                      className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                    >
+                      Read more
+                      <ArrowRight className="ml-1 h-3.5 w-3.5" />
+                    </Link>
+                    {update.fileUrl && (
+                      <a
+                        href={update.fileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-primary"
+                      >
+                        <Download className="h-3.5 w-3.5" />
+                        PDF
+                      </a>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             ))}

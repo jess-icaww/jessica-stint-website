@@ -1,19 +1,21 @@
 import { client } from "@/lib/sanity"
 import { PortableText } from "@portabletext/react"
-import { CalendarDays } from "lucide-react"
+import { CalendarDays, Download } from "lucide-react"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { Button } from "@/components/ui/button"
 
 async function getUpdate(slug: string) {
   return client.fetch(
     `*[_type == "update" && slug.current == $slug][0]{
-      title, date, tag, body, "image": image.asset->url
+      title, date, tag, body, "image": image.asset->url, "fileUrl": newsletterFile.asset->url
     }`,
     { slug }
   )
 }
 
-export default async function UpdatePage({ params }: { params: { slug: string } }) {
+export default async function UpdatePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const update = await getUpdate(slug)
 
@@ -34,9 +36,27 @@ export default async function UpdatePage({ params }: { params: { slug: string } 
         <h1 className="mb-8 font-serif text-4xl font-light text-foreground md:text-5xl">
           {update.title}
         </h1>
-        <div className="prose prose-neutral max-w-none">
-          <PortableText value={update.body} />
-        </div>
+
+        {update.image && (
+          <div className="relative mb-8 aspect-[16/10] overflow-hidden rounded-lg shadow-md">
+            <Image src={update.image} alt={update.title} fill className="object-cover" />
+          </div>
+        )}
+
+        {update.fileUrl && (
+          <a href={update.fileUrl} target="_blank" rel="noopener noreferrer" className="mb-8 inline-block">
+            <Button variant="outline">
+              <Download className="mr-2 h-4 w-4" />
+              Download Full Newsletter (PDF)
+            </Button>
+          </a>
+        )}
+
+        {update.body && (
+          <div className="prose prose-neutral max-w-none">
+            <PortableText value={update.body} />
+          </div>
+        )}
       </article>
       <Footer />
     </main>
