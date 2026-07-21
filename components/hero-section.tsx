@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
+import Link from "next/link"
 
 export function HeroSection() {
   const scrollToStory = () => {
@@ -53,10 +54,10 @@ export function HeroSection() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Button
             size="lg"
+            asChild
             className="min-w-[180px] rounded-full bg-primary px-8 text-sm font-semibold shadow-lg transition-all duration-200 cursor-pointer hover:bg-primary/90 hover:scale-105 hover:shadow-xl active:scale-95"
-            onClick={() => document.getElementById("connect")?.scrollIntoView({ behavior: "smooth" })}
           >
-            Partner With Me
+            <Link href="/updates">Read Latest Update</Link>
           </Button>
           <Button
             size="lg"
