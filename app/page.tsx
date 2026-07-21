@@ -21,9 +21,7 @@ export default function Home() {
       <Reveal>
         <WhyJapan />
       </Reveal>
-      <Reveal>
-        <MinistryTokyo />
-      </Reveal>
+      <MinistryTokyo />
       <Reveal>
         <HomeGallery />
       </Reveal>

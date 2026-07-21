@@ -1,79 +1,136 @@
 import Image from "next/image"
-import { GraduationCap, Users, Church, Heart, Coffee } from "lucide-react"
+import { Reveal } from "@/components/reveal"
 
-const work = [
+const moments = [
   {
-    icon: GraduationCap,
-    title: "Campus ministry",
-    text: "Meeting university students where they are — in classrooms, clubs, and coffee shops across Tokyo.",
+    image: "/images/ministry-cafe.png",
+    alt: "Students talking over coffee in a Tokyo cafe",
+    label: "Coffee after class",
+    text: "I hope many of my afternoons are spent sitting across from a friend over coffee, listening to their story, answering their questions about Jesus, and slowly building the kind of trust where faith can be talked about honestly.",
   },
   {
-    icon: Users,
-    title: "Discipleship",
-    text: "Walking closely with a few, helping young believers grow deep roots and learn to follow Jesus.",
+    image: "/images/gallery-train.png",
+    alt: "View from inside a Tokyo commuter train",
+    label: "Riding the trains",
+    text: "So much of life in Tokyo happens on the move. I'll spend hours on trains crisscrossing the city to meet students where they are — because showing up, again and again, is its own quiet way of loving people.",
   },
   {
-    icon: Church,
-    title: "Church partnership",
-    text: "Serving alongside local churches and missionaries who have faithfully labored here for years.",
+    image: "/images/moment-bible.png",
+    alt: "A small group reading the Bible together",
+    label: "Opening the Bible together",
+    text: "Some evenings will be spent gathered around a low table with a few friends and open Bibles, reading slowly, asking hard questions, and discovering who God is together for the very first time.",
   },
   {
-    icon: Heart,
-    title: "Evangelism",
-    text: "Sharing the hope of the gospel gently and honestly with friends who have never heard it.",
+    image: "/images/moment-meal.png",
+    alt: "Friends sharing a home-cooked meal",
+    label: "Sharing meals",
+    text: "I want my table to always have room for one more. There's something about a shared meal — the laughter, the leftovers, the lingering — that turns strangers into friends and friends into family.",
   },
   {
-    icon: Coffee,
-    title: "Everyday presence",
-    text: "Simply being present — sharing meals, listening to stories, and loving people over time.",
+    image: "/images/moment-church.png",
+    alt: "A small Japanese church during worship",
+    label: "Worshipping with local believers",
+    text: "I'm excited to learn from faithful Japanese pastors and missionaries who have served their communities for years, and to worship alongside the small, steadfast churches God is building here.",
   },
+  {
+    image: "/images/moment-campus.png",
+    alt: "Walking through a university campus",
+    label: "Walking and praying on campus",
+    text: "Often the ministry is simply walking through campus, praying quietly for the students hurrying past — asking God to open doors, soften hearts, and let me be present when someone is ready to talk.",
+  },
+]
+
+const week = [
+  { day: "Monday", note: "Meeting students after class over coffee" },
+  { day: "Tuesday", note: "Bible study with university friends" },
+  { day: "Wednesday", note: "Language learning and time in the community" },
+  { day: "Thursday", note: "On campus for conversations and outreach" },
+  { day: "Friday", note: "Dinner and long talks with students" },
+  { day: "Weekend", note: "Church, discipleship, and serving with local believers" },
 ]
 
 export function MinistryTokyo() {
   return (
     <section className="bg-secondary/50 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-          {/* Intro + photo */}
-          <div className="md:sticky md:top-24 md:self-start">
+      <div className="mx-auto max-w-5xl px-6">
+        {/* Intro */}
+        <Reveal>
+          <div className="max-w-2xl">
             <span className="mb-5 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
-              Ministry in Tokyo
+              A day in the life
             </span>
             <h2 className="font-serif text-4xl font-light leading-tight text-foreground text-balance md:text-5xl">
-              What my days will hold
+              Come walk through Tokyo with me
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Ministry here is slow and relational. Much of it looks like ordinary life — friendship,
-              faithfulness, and being present with people day after day.
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
+              Ministry here is slow and relational — less about programs and more about presence. Here are a
+              few of the ordinary, faithful moments I hope will fill my days.
             </p>
-            <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-sm shadow-sm">
-              <Image
-                src="/images/ministry-cafe.png"
-                alt="Students talking over coffee in a Tokyo cafe"
-                fill
-                className="object-cover"
-              />
-            </div>
           </div>
+        </Reveal>
 
-          {/* Quiet list */}
-          <ul className="flex flex-col">
-            {work.map((item, i) => (
-              <li
-                key={i}
-                className="flex gap-5 border-b border-border py-7 first:pt-0 last:border-b-0"
-              >
-                <span className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-accent/50 text-primary">
-                  <item.icon className="h-5 w-5" strokeWidth={1.5} />
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl font-light text-foreground">{item.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p>
+        {/* Alternating photo moments */}
+        <div className="mt-16 flex flex-col gap-20 md:mt-24 md:gap-28">
+          {moments.map((moment, i) => (
+            <Reveal key={moment.label}>
+              <div className="grid items-center gap-8 md:grid-cols-2 md:gap-14">
+                {/* Photo */}
+                <div className={i % 2 === 1 ? "md:order-2" : ""}>
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-sm">
+                    <Image
+                      src={moment.image || "/placeholder.svg"}
+                      alt={moment.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
-              </li>
-            ))}
-          </ul>
+
+                {/* Reflection */}
+                <div className={i % 2 === 1 ? "md:order-1" : ""}>
+                  <span className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 font-serif text-2xl font-light leading-snug text-foreground text-balance md:text-3xl">
+                    {moment.label}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+                    {moment.text}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
+
+        {/* A week in Tokyo */}
+        <Reveal>
+          <div className="mt-24 border-t border-border pt-16 md:mt-32">
+            <div className="max-w-2xl">
+              <span className="mb-5 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
+                A week in Tokyo
+              </span>
+              <h3 className="font-serif text-3xl font-light leading-tight text-foreground text-balance md:text-4xl">
+                What a rhythm of faithfulness might look like
+              </h3>
+            </div>
+
+            <ul className="mt-10 flex flex-col">
+              {week.map((entry) => (
+                <li
+                  key={entry.day}
+                  className="flex flex-col gap-1 border-b border-border py-5 first:border-t sm:flex-row sm:items-baseline sm:gap-8"
+                >
+                  <span className="w-32 flex-shrink-0 font-serif text-lg font-light text-foreground">
+                    {entry.day}
+                  </span>
+                  <span className="leading-relaxed text-muted-foreground">{entry.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
