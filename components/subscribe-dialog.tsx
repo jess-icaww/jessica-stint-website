@@ -20,7 +20,7 @@ export function SubscribeDialog({ trigger }: { trigger?: ReactNode }) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="font-serif text-xl font-medium">
+          <DialogTitle className="font-serif text-xl font-semibold">
             Get Updates in Your Inbox
           </DialogTitle>
           <DialogDescription>

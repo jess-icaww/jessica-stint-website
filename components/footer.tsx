@@ -71,10 +71,6 @@ export function Footer() {
                 </div>
 
                 <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-primary-foreground/50">
-                    <p>© 2026</p>
-                    <p className="mt-2">
-                        Donations are tax-deductible through Soon Movement Global, a registered 501(c)(3).
-                    </p>
                 </div>
             </div>
         </footer>

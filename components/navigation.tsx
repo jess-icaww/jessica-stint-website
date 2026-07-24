@@ -39,7 +39,11 @@ export function Navigation() {
           ))}
           <SubscribeDialog
             trigger={
-              <Button size="sm" className="ml-2 cursor-pointer">
+              <Button
+                size="sm"
+                variant="outline"
+                className="ml-2 cursor-pointer border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground"
+              >
                 Subscribe
               </Button>
             }
@@ -76,7 +80,10 @@ export function Navigation() {
             ))}
             <SubscribeDialog
               trigger={
-                <Button className="mt-2 w-full cursor-pointer">
+                <Button
+                  variant="outline"
+                  className="mt-2 w-full cursor-pointer border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground"
+                >
                   Subscribe
                 </Button>
               }
