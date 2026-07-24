@@ -38,7 +38,7 @@ const milestones: Milestone[] = [
 
 export function AboutMe() {
   return (
-    <section id="story" className="scroll-mt-16 overflow-hidden bg-background py-24 md:py-32">
+    <section id="story" className="scroll-mt-16 overflow-hidden bg-secondary/40 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Header */}
         <Reveal>
