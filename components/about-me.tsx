@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/reveal"
+import { TimelineProgress } from "@/components/timeline-progress"
 
 type Milestone = {
   year: string
@@ -21,7 +22,7 @@ const milestones: Milestone[] = [
     image: "/images/sea.jpg",
     alt: "Southeast Asia Missions Trip 2023",
     imageZoom: 1.2,
-    imageZoomOrigin: "60% 100%",
+    imageZoomOrigin: "46% 100%",
   },
   {
     year: "2024",
@@ -58,24 +59,23 @@ export function AboutMe() {
 
         {/* Timeline */}
         <div className="relative mt-20 md:mt-28">
-          {/* Route line */}
-          <div
-            aria-hidden="true"
-            className="absolute left-[27px] top-2 bottom-2 w-px border-l border-dashed border-border md:left-1/2 md:-translate-x-1/2"
-          />
+          {/* Route line that fills with scroll progress */}
+          <TimelineProgress />
 
           <div className="space-y-20 md:space-y-32">
             {milestones.map((m, i) => (
-              <Reveal key={m.year}>
-                <div className="relative md:grid md:grid-cols-2 md:items-center md:gap-14">
-                  {/* Stamp marker */}
-                  <div className="absolute left-0 top-0 z-10 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+              <div key={m.year} className="relative md:grid md:grid-cols-2 md:items-center md:gap-14">
+                {/* Stamp marker */}
+                <div className="absolute left-0 top-0 z-10 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+                  <Reveal direction="scale">
                     <StampBadge year={m.year} />
-                  </div>
+                  </Reveal>
+                </div>
 
-                  {/* Image */}
-                  <div className={i % 2 === 1 ? "md:order-2 md:col-start-2" : ""}>
-                    <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
+                {/* Image */}
+                <Reveal direction={i % 2 === 1 ? "right" : "left"} className={i % 2 === 1 ? "md:order-2 md:col-start-2" : ""}>
+                  <div className="group relative ml-20 overflow-hidden rounded-sm shadow-sm transition-shadow duration-500 hover:shadow-xl md:ml-0">
+                    <div className="transition-transform duration-500 ease-out group-hover:scale-105">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={m.image || "/placeholder.svg"}
@@ -88,33 +88,42 @@ export function AboutMe() {
                         }}
                       />
                     </div>
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    />
                   </div>
+                </Reveal>
 
-                  {/* Text */}
-                  <div className={`ml-20 mt-6 md:ml-0 md:mt-0 ${i % 2 === 1 ? "md:order-1 md:col-start-1 md:text-right" : ""}`}>
-                    <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
-                      {m.place}
-                    </p>
-                    <h3 className="mt-3 font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
-                      {m.lesson}
-                    </h3>
-                    <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{m.body}</p>
-                  </div>
-                </div>
-              </Reveal>
+                {/* Text */}
+                <Reveal
+                  direction={i % 2 === 1 ? "left" : "right"}
+                  className={`ml-20 mt-6 md:ml-0 md:mt-0 ${i % 2 === 1 ? "md:order-1 md:col-start-1 md:text-right" : ""}`}
+                >
+                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
+                    {m.place}
+                  </p>
+                  <h3 className="mt-3 font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
+                    {m.lesson}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">{m.body}</p>
+                </Reveal>
+              </div>
             ))}
 
             {/* Asia Minor — the turning point */}
-            <Reveal>
-              <div className="relative md:grid md:grid-cols-2 md:items-center md:gap-14">
-                {/* Stamp marker */}
-                <div className="absolute left-0 top-0 z-10 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+            <div className="relative md:grid md:grid-cols-2 md:items-center md:gap-14">
+              {/* Stamp marker */}
+              <div className="absolute left-0 top-0 z-10 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+                <Reveal direction="scale">
                   <StampBadge year="2025" featured />
-                </div>
+                </Reveal>
+              </div>
 
-                {/* Image */}
-                <div>
-                  <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
+              {/* Image */}
+              <Reveal direction="left">
+                <div className="group relative ml-20 overflow-hidden rounded-sm shadow-sm transition-shadow duration-500 hover:shadow-xl md:ml-0">
+                  <div className="transition-transform duration-500 ease-out group-hover:scale-105">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/images/am.jpg"
@@ -126,50 +135,61 @@ export function AboutMe() {
                       }}
                     />
                   </div>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
                 </div>
+              </Reveal>
 
-                {/* Text */}
-                <div className="ml-20 mt-6 md:ml-0 md:mt-0">
-                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
-                    Asia Minor · The Turning Point
-                  </p>
-                  <h3 className="mt-3 font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
-                    God showed me His call reaches every nation — and invited me into it.
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
-                    Sitting in a land where the early church once carried the gospel, I was convicted in a
-                    fresh way. I became increasingly certain that God&apos;s heart is for every nation to hear
-                    of Him.
-                  </p>
+              {/* Text */}
+              <Reveal direction="right" className="ml-20 mt-6 md:ml-0 md:mt-0">
+                <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent-foreground">
+                  Asia Minor · The Turning Point
+                </p>
+                <h3 className="mt-3 font-serif text-2xl font-light italic leading-snug text-foreground text-balance md:text-3xl">
+                  God showed me His call reaches every nation — and invited me into it.
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground text-pretty">
+                  Sitting in a land where the early church once carried the gospel, I was convicted in a
+                  fresh way. I became increasingly certain that God&apos;s heart is for every nation to hear
+                  of Him.
+                </p>
 
-                  {/* Scripture callouts */}
-                  <div className="mt-6 space-y-5">
-                    <blockquote className="border-l border-accent pl-5">
-                      <p className="font-serif text-lg font-light italic leading-snug text-foreground text-pretty">
-                        &ldquo;You will be my witnesses... to the ends of the earth.&rdquo;
-                      </p>
-                      <cite className="mt-2 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
-                        Acts 1:8
-                      </cite>
-                    </blockquote>
-                    <blockquote className="border-l border-accent pl-5">
-                      <p className="font-serif text-lg font-light italic leading-snug text-foreground text-pretty">
-                        &ldquo;Go therefore and make disciples of all nations...&rdquo;
-                      </p>
-                      <cite className="mt-2 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
-                        Matthew 28:19
-                      </cite>
-                    </blockquote>
-                  </div>
+                {/* Scripture callouts */}
+                <div className="mt-6 space-y-5">
+                  <blockquote className="border-l border-accent pl-5">
+                    <p className="font-serif text-lg font-light italic leading-snug text-foreground text-pretty">
+                      &ldquo;You will be my witnesses... to the ends of the earth.&rdquo;
+                    </p>
+                    <cite className="mt-2 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+                      Acts 1:8
+                    </cite>
+                  </blockquote>
+                  <blockquote className="border-l border-accent pl-5">
+                    <p className="font-serif text-lg font-light italic leading-snug text-foreground text-pretty">
+                      &ldquo;Go therefore and make disciples of all nations...&rdquo;
+                    </p>
+                    <cite className="mt-2 block text-xs font-medium uppercase not-italic tracking-widest text-muted-foreground">
+                      Matthew 28:19
+                    </cite>
+                  </blockquote>
                 </div>
-              </div>
+              </Reveal>
+            </div>
+          </div>
+
+          {/* End-of-timeline marker — the line stops here, right above My Response */}
+          <div className="mt-16 flex justify-center md:mt-20">
+            <Reveal direction="scale">
+              <div className="h-6 w-6 rounded-full border-2 border-dashed border-primary bg-primary shadow-sm" />
             </Reveal>
           </div>
         </div>
 
         {/* My Response — the climax */}
         <Reveal>
-          <div className="mx-auto mt-24 max-w-2xl text-center md:mt-32">
+          <div className="mx-auto mt-8 max-w-2xl text-center">
             <span className="mb-6 inline-block text-xs font-medium uppercase tracking-[0.25em] text-primary">
               My Response
             </span>

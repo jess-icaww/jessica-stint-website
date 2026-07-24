@@ -2,7 +2,31 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react"
 
-export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
+type Direction = "up" | "left" | "right" | "scale"
+
+const hiddenClasses: Record<Direction, string> = {
+  up: "translate-y-6 opacity-0",
+  left: "translate-y-6 opacity-0 md:translate-y-0 md:-translate-x-10",
+  right: "translate-y-6 opacity-0 md:translate-y-0 md:translate-x-10",
+  scale: "scale-75 opacity-0",
+}
+
+const visibleClasses: Record<Direction, string> = {
+  up: "translate-y-0 opacity-100",
+  left: "translate-y-0 opacity-100 md:translate-x-0",
+  right: "translate-y-0 opacity-100 md:translate-x-0",
+  scale: "scale-100 opacity-100",
+}
+
+export function Reveal({
+  children,
+  className = "",
+  direction = "up",
+}: {
+  children: ReactNode
+  className?: string
+  direction?: Direction
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -35,7 +59,7 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
     <div
       ref={ref}
       className={`transition-all duration-[900ms] ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        visible ? visibleClasses[direction] : hiddenClasses[direction]
       } ${className}`}
     >
       {children}
