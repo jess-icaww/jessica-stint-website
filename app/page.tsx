@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
+import { OpeningLetter } from "@/components/opening-letter"
 import { AboutMe } from "@/components/about-me"
 import { FeaturedNewsletter } from "@/components/featured-newsletter"
 import { WhyJapan } from "@/components/why-japan"
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
       <HeroSection />
+      <OpeningLetter />
       <AboutMe />
       <Reveal>
         <FeaturedNewsletter />
