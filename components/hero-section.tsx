@@ -74,7 +74,7 @@ export function HeroSection() {
         </span>
 
         {/* Title */}
-        <h1 className="mb-6 max-w-4xl font-serif text-6xl font-light leading-tight text-balance drop-shadow-lg md:text-7xl lg:text-8xl">
+        <h1 className="mb-6 max-w-4xl font-serif text-6xl font-semibold leading-tight text-balance drop-shadow-[0_8px_28px_rgba(0,0,0,0.8)] md:text-7xl lg:text-8xl">
           Called to Japan
         </h1>
 
