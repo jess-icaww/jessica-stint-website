@@ -14,10 +14,18 @@ export function WhyJapan() {
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-sm">
             <Image
-              src="/images/why-japan.png"
-              alt="A quiet residential Tokyo neighborhood"
+              src="/images/japan_street.jpeg"
+              alt="A quiet Tokyo back street"
               fill
               className="object-cover"
+              style={{
+                transform: "rotate(3deg) scale(1.1)",
+                filter: "saturate(0.5) sepia(0.2) contrast(1.15) brightness(0.82)",
+              }}
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/15"
             />
           </div>
 

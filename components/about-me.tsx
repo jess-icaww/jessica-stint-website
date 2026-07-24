@@ -15,11 +15,13 @@ type Milestone = {
 const milestones: Milestone[] = [
   {
     year: "2023",
-    place: "Vietnam",
+    place: "Southeast Asia",
     lesson: "God showed me He is at work among the nations.",
     body: "One of my first times serving cross-culturally. I arrived unsure of what I had to offer, and left having watched God move in places and people I never expected. My eyes were opened to a world far bigger than my own.",
-    image: "/images/vietnam.jpg",
-    alt: "Mission volunteers laughing with local children and students in Vietnam",
+    image: "/images/sea.jpg",
+    alt: "Southeast Asia Missions Trip 2023",
+    imageZoom: 1.2,
+    imageZoomOrigin: "60% 100%",
   },
   {
     year: "2024",
@@ -27,9 +29,9 @@ const milestones: Milestone[] = [
     lesson: "God showed me the joy of sharing the gospel across cultures.",
     body: "This is where my heart broke open. Sharing the gospel, serving students, sitting in long conversations over coffee — I saw God soften hearts and I felt more alive in His work than I ever had. Japan didn't leave me after I flew home.",
     image: "/images/japan.jpg",
-    alt: "Young woman talking with Japanese university students in a park",
+    alt: "Japan Missions Trip 2024",
     imagePosition: "0% 50%",
-    imageZoom: 1.2,
+    imageZoom: 1.1,
     imageZoomOrigin: "30% 100%",
   },
 ]
@@ -115,9 +117,13 @@ export function AboutMe() {
                   <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/journey-asia-minor.png"
-                      alt="Ancient ruins and marble columns in Asia Minor at golden hour"
+                      src="/images/am.jpg"
+                      alt="Asia Minor Missions Trip 2025"
                       className="aspect-[4/3] w-full object-cover"
+                      style={{
+                        transform: "scale(1.15)",
+                        transformOrigin: "50% 100%",
+                      }}
                     />
                   </div>
                 </div>
