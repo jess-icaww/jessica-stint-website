@@ -51,7 +51,7 @@ export default async function UpdatePage({ params }: { params: Promise<{ slug: s
               href={update.fileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary"
+              className="mt-6 inline-flex items-center border-b border-transparent text-sm font-medium text-muted-foreground transition-colors hover:border-current hover:text-primary"
             >
               <Download className="mr-2 h-4 w-4" />
               Download the PDF

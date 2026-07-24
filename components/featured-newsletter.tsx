@@ -59,7 +59,7 @@ export async function FeaturedNewsletter() {
           </div>
           <Link
             href="/updates"
-            className="group hidden items-center gap-2 text-sm font-medium text-primary md:inline-flex"
+            className="group hidden w-fit items-center gap-2 border-b border-transparent text-sm font-medium text-primary transition-colors hover:border-current md:inline-flex"
           >
             All updates
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -89,7 +89,7 @@ export async function FeaturedNewsletter() {
               {title}
             </h3>
             <p className="text-lg leading-relaxed text-muted-foreground line-clamp-4">{excerpt}</p>
-            <span className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary">
+            <span className="mt-2 inline-flex w-fit items-center gap-2 border-b border-transparent text-sm font-medium text-primary transition-colors group-hover:border-current">
               Continue reading
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>

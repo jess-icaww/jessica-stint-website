@@ -27,7 +27,7 @@ export function SubscribeDialog({ trigger }: { trigger?: ReactNode }) {
             Subscribe to receive monthly updates, prayer requests, and stories from my journey in Japan.
           </DialogDescription>
         </DialogHeader>
-        <NewsletterForm />
+        <NewsletterForm variant="minimal" />
       </DialogContent>
     </Dialog>
   )

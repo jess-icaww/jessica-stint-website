@@ -4,7 +4,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { SubscribeDialog } from "@/components/subscribe-dialog"
 
 const navLinks = [
@@ -15,16 +14,9 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
-
-  function isActive(href: string) {
-    if (href.includes("#")) return false
-    if (href === "/") return pathname === "/"
-    return pathname.startsWith(href)
-  }
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed left-0 right-0 top-0 z-50 bg-background/70 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="font-serif text-xl font-medium text-foreground">
@@ -37,18 +29,14 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
-                isActive(link.href)
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+              className="border-b border-transparent text-sm font-medium text-foreground transition-colors hover:border-current"
             >
               {link.label}
             </Link>
           ))}
           <SubscribeDialog
             trigger={
-              <Button size="sm" className="ml-2">
+              <Button size="sm" className="ml-2 cursor-pointer">
                 Subscribe
               </Button>
             }
@@ -78,14 +66,14 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-base font-medium text-foreground"
+                className="w-fit border-b border-transparent text-base font-medium text-foreground transition-colors hover:border-current"
               >
                 {link.label}
               </Link>
             ))}
             <SubscribeDialog
               trigger={
-                <Button className="mt-2 w-full">
+                <Button className="mt-2 w-full cursor-pointer">
                   Subscribe
                 </Button>
               }

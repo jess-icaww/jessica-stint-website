@@ -1,10 +1,15 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
 
+const POSTER_URL = "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1920&q=80"
+
 export function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
   const scrollToStory = () => {
     const el = document.getElementById("story")
     if (!el) return
@@ -12,17 +17,45 @@ export function HeroSection() {
     window.scrollTo({ top: offset - 40, behavior: "smooth" })
   }
 
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    // Pause decoding once the hero scrolls out of view instead of letting it run forever in the background.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0 },
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0">
+        {/* Static poster on small screens — skips decoding the video on the devices least able to afford it */}
+        <img
+          src={POSTER_URL}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover object-center md:hidden"
+        />
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="h-full w-full object-cover object-center"
-          poster="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1920&q=80"
+          preload="none"
+          className="hidden h-full w-full object-cover object-center md:block"
+          poster={POSTER_URL}
         >
           <source
             src="https://videos.pexels.com/video-files/2711017/2711017-uhd_2560_1440_30fps.mp4"
@@ -30,7 +63,7 @@ export function HeroSection() {
           />
         </video>
         {/* Stronger, more cinematic gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/60 to-black/85" />
       </div>
 
       {/* Content */}
