@@ -9,8 +9,21 @@ import { NewsletterForm } from "@/components/newsletter-form"
 import { Reveal } from "@/components/reveal"
 import { client } from "@/lib/sanity"
 
+type Update = {
+  id: string
+  date: string
+  title: string
+  excerpt?: string
+  image?: string
+  fileUrl?: string
+  tag?: string
+  featured?: boolean
+  prayerSnippet?: string
+  slug: string
+}
+
 async function getUpdates() {
-  return client.fetch(`
+  return client.fetch<Update[]>(`
     *[_type == "update"] | order(date desc) {
       "id": _id,
       "date": coalesce(dateTime(date), date),
@@ -45,7 +58,7 @@ export default async function UpdatesPage() {
       <section className="relative flex min-h-[62vh] items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/why-japan.png"
+            src="/images/japan_street.jpeg"
             alt="A quiet Tokyo neighborhood street"
             fill
             priority

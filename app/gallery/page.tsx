@@ -78,7 +78,7 @@ const galleryItems: GalleryItem[] = [
     id: 7,
     type: "video",
     src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    thumbnail: "/images/why-japan.png",
+    thumbnail: "/images/japan_street.jpeg",
     title: "Student Testimony: Yuki's Story",
     location: "Tokyo",
     date: "April 2026",
@@ -105,7 +105,7 @@ const galleryItems: GalleryItem[] = [
   {
     id: 10,
     type: "photo",
-    src: "/images/why-japan.png",
+    src: "/images/japan_street.jpeg",
     title: "Neighborhood Walks",
     location: "Setagaya, Tokyo",
     date: "May 2026",
