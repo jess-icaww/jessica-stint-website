@@ -6,13 +6,15 @@ export function OpeningLetter() {
       <div className="mx-auto max-w-[760px] px-6">
         {/* Header */}
         <div className="mb-12 flex flex-wrap items-center gap-8">
-          <Image
-            src="/images/jessica-portrait.png"
-            alt="Jessica Wong"
-            width={160}
-            height={160}
-            className="rounded-full object-cover"
-          />
+          <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full">
+            <Image
+              src="/images/headshot.jpeg"
+              alt="Headshot!"
+              fill
+              className="object-cover"
+              style={{ transform: "scale(3.7)", transformOrigin: "49% 55%" }}
+            />
+          </div>
           <div>
             <p className="font-playfair text-[26px] italic text-[oklch(0.27_0.015_60)]">Jessica Wong</p>
             <p className="mt-1 text-[14px] text-[oklch(0.5_0.02_65)]">Writing from Tokyo, Japan &middot; Year One</p>
