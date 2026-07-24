@@ -19,7 +19,10 @@ export function Navigation() {
     <nav className="fixed left-0 right-0 top-0 z-50 bg-background/70 backdrop-blur-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="font-serif text-xl font-medium text-foreground">
+        <Link
+          href="/"
+          className="font-serif text-xl font-medium text-foreground [text-shadow:0_1px_1px_rgba(0,0,0,0.08)]"
+        >
           Jessica Wong
         </Link>
 
@@ -29,7 +32,7 @@ export function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className="border-b border-transparent text-sm font-medium text-foreground transition-colors hover:border-current"
+              className="border-b border-transparent text-sm font-medium text-foreground [text-shadow:0_1px_1px_rgba(0,0,0,0.08)] transition-colors hover:border-current"
             >
               {link.label}
             </Link>
@@ -50,9 +53,9 @@ export function Navigation() {
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <X className="h-6 w-6 text-foreground" />
+            <X className="h-6 w-6 text-foreground drop-shadow-sm" />
           ) : (
-            <Menu className="h-6 w-6 text-foreground" />
+            <Menu className="h-6 w-6 text-foreground drop-shadow-sm" />
           )}
         </button>
       </div>
