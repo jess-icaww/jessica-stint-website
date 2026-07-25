@@ -11,14 +11,14 @@ export function TimelineEndMarker() {
     if (!el) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
 
-    // Sits just above "My Response" — uses the same entrance threshold as Reveal
-    // so the ping fires as that section scrolls into view, not the earlier
-    // scroll-anchor line TimelineProgress uses for the fill itself.
+    // Fires right as the marker crosses the same viewport line TimelineProgress
+    // uses as its scroll anchor, so the ping fires exactly when the fill line
+    // visually reaches/"hits" the circle.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setReached(true)
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+      { rootMargin: "-65% 0px -35% 0px", threshold: 0 },
     )
     observer.observe(el)
     return () => observer.disconnect()
