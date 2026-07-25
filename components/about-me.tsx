@@ -1,5 +1,7 @@
 import { Reveal } from "@/components/reveal"
 import { TimelineProgress } from "@/components/timeline-progress"
+import { TimelineEndMarker } from "@/components/timeline-end-marker"
+import { StampBadge } from "@/components/stamp-badge"
 
 type Milestone = {
   year: string
@@ -74,23 +76,17 @@ export function AboutMe() {
 
                 {/* Image */}
                 <Reveal direction={i % 2 === 1 ? "right" : "left"} className={i % 2 === 1 ? "md:order-2 md:col-start-2" : ""}>
-                  <div className="group relative ml-20 overflow-hidden rounded-sm shadow-sm transition-shadow duration-500 hover:shadow-xl md:ml-0">
-                    <div className="transition-transform duration-500 ease-out group-hover:scale-105">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={m.image || "/placeholder.svg"}
-                        alt={m.alt}
-                        className="aspect-[4/3] w-full object-cover"
-                        style={{
-                          objectPosition: m.imagePosition,
-                          transform: m.imageZoom ? `scale(${m.imageZoom})` : undefined,
-                          transformOrigin: m.imageZoomOrigin ?? m.imagePosition,
-                        }}
-                      />
-                    </div>
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={m.image || "/placeholder.svg"}
+                      alt={m.alt}
+                      className="aspect-[4/3] w-full object-cover"
+                      style={{
+                        objectPosition: m.imagePosition,
+                        transform: m.imageZoom ? `scale(${m.imageZoom})` : undefined,
+                        transformOrigin: m.imageZoomOrigin ?? m.imagePosition,
+                      }}
                     />
                   </div>
                 </Reveal>
@@ -122,22 +118,16 @@ export function AboutMe() {
 
               {/* Image */}
               <Reveal direction="left">
-                <div className="group relative ml-20 overflow-hidden rounded-sm shadow-sm transition-shadow duration-500 hover:shadow-xl md:ml-0">
-                  <div className="transition-transform duration-500 ease-out group-hover:scale-105">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/am.jpg"
-                      alt="Asia Minor Missions Trip 2025"
-                      className="aspect-[4/3] w-full object-cover"
-                      style={{
-                        transform: "scale(1.15)",
-                        transformOrigin: "50% 100%",
-                      }}
-                    />
-                  </div>
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                <div className="ml-20 overflow-hidden rounded-sm shadow-sm md:ml-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/am.jpg"
+                    alt="Asia Minor Missions Trip 2025"
+                    className="aspect-[4/3] w-full object-cover"
+                    style={{
+                      transform: "scale(1.15)",
+                      transformOrigin: "50% 100%",
+                    }}
                   />
                 </div>
               </Reveal>
@@ -182,7 +172,7 @@ export function AboutMe() {
           {/* End-of-timeline marker — the line stops here, right above My Response */}
           <div className="mt-16 flex justify-center md:mt-20">
             <Reveal direction="scale">
-              <div className="h-6 w-6 rounded-full border-2 border-dashed border-primary bg-primary shadow-sm" />
+              <TimelineEndMarker />
             </Reveal>
           </div>
         </div>
@@ -222,19 +212,5 @@ export function AboutMe() {
         </Reveal>
       </div>
     </section>
-  )
-}
-
-function StampBadge({ year, featured = false }: { year: string; featured?: boolean }) {
-  return (
-    <div
-      className={`flex h-14 w-14 -rotate-6 items-center justify-center rounded-full border-2 border-dashed text-xs font-semibold uppercase tracking-wider shadow-sm md:h-16 md:w-16 ${
-        featured
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-accent bg-card text-accent-foreground"
-      }`}
-    >
-      {year}
-    </div>
   )
 }
