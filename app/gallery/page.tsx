@@ -197,24 +197,21 @@ export default function GalleryPage() {
       <section className="relative flex min-h-[62vh] items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/gallery-lights.png"
-            alt="A quiet Tokyo street glowing at dusk"
+            src="/images/gallery.jpg"
+            alt="Field in Tokyo"
             fill
             priority
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/30 via-foreground/40 to-foreground/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/55 to-foreground/90" />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-16 pt-32 md:pb-20">
-          <span className="mb-5 inline-block text-xs font-medium uppercase tracking-[0.35em] text-background/70">
+          <span className="mb-5 inline-block text-xs font-medium uppercase tracking-[0.35em] text-background/70 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
             Moments from the mission field
           </span>
-          <h1 className="max-w-3xl font-serif text-5xl font-light leading-[1.05] text-balance text-background drop-shadow-sm md:text-6xl">
-            The gallery
+          <h1 className="max-w-3xl font-serif text-5xl font-light leading-[1.05] text-balance text-background drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] md:text-6xl">
+            Gallery
           </h1>
-          <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-background/85">
-            A visual journal of everyday life and ministry in Japan — the streets, the people, and the quiet moments in between.
-          </p>
         </div>
       </section>
 

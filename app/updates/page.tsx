@@ -74,11 +74,6 @@ export default async function UpdatesPage() {
           <h1 className="max-w-3xl font-serif text-5xl font-light leading-[1.05] text-balance text-background drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)] md:text-6xl">
             Updates from Tokyo
           </h1>
-          <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-background/85 [text-shadow:0_1px_3px_rgba(0,0,0,0.4)]">
-            {
-              "Monthly letters from the journey — the students I'm meeting, answered prayers, honest struggles, and the small everyday moments in between."
-            }
-          </p>
         </div>
       </section>
 
