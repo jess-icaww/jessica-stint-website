@@ -32,7 +32,7 @@ export function NewsletterForm({ variant = "default" }: { variant?: "default" | 
 
   if (status === "done") {
     return (
-      <p className={variant === "minimal" ? "text-sm font-medium text-foreground" : "text-sm font-medium text-primary"}>
+      <p className="text-sm font-medium text-primary">
         {message}
       </p>
     )

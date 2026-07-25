@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import Link from "next/link"
 
 const POSTER_URL = "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1920&q=80"
@@ -83,23 +82,22 @@ export function HeroSection() {
           Going where less than 0.5% know the name of Jesus
         </p>
 
-        {/* Buttons — matched width, pill shape */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <Button
-            size="lg"
-            asChild
-            className="min-w-[180px] rounded-full bg-primary px-8 text-sm font-semibold shadow-lg transition-all duration-200 cursor-pointer hover:bg-primary/90 hover:scale-105 hover:shadow-xl active:scale-95"
+        {/* Buttons — softened to text links, matching the site's quieter CTA language */}
+        <div className="flex flex-wrap items-center justify-center gap-8">
+          <Link
+            href="/updates"
+            className="group inline-flex items-center gap-2 border-b border-transparent text-sm font-semibold text-white drop-shadow-sm transition-colors hover:border-current"
           >
-            <Link href="/updates">Read Latest Update</Link>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="min-w-[180px] rounded-full border-white/60 bg-transparent px-8 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 cursor-pointer hover:bg-white/40 hover:border-white hover:text-white hover:scale-105 active:scale-95"
+            Read Latest Update
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <button
             onClick={scrollToStory}
+            className="group inline-flex cursor-pointer items-center gap-2 border-b border-transparent text-sm font-semibold text-white drop-shadow-sm transition-colors hover:border-current"
           >
             Read My Story
-          </Button>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </div>
 

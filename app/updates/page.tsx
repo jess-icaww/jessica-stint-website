@@ -58,7 +58,7 @@ export default async function UpdatesPage() {
       <section className="relative flex min-h-[62vh] items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/japan_street.jpeg"
+            src="/images/why-japan.png"
             alt="A quiet Tokyo neighborhood street"
             fill
             priority
