@@ -18,9 +18,9 @@ export function SubscribeDialog({ trigger }: { trigger?: ReactNode }) {
       <DialogTrigger asChild>
         {trigger ?? <Button size="sm">Subscribe</Button>}
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="rounded-2xl border-foreground/10 shadow-none">
         <DialogHeader>
-          <DialogTitle className="font-serif text-xl font-semibold">
+          <DialogTitle className="font-playfair text-xl italic">
             Get Updates in Your Inbox
           </DialogTitle>
           <DialogDescription>

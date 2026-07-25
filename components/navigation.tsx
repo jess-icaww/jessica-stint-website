@@ -23,7 +23,7 @@ export function Navigation() {
               Jessica Wong
             </span>
             <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/70 [text-shadow:0_1px_3px_rgba(0,0,0,0.35)]">
-              日本への旅 (Journey to Japan)
+              日本への旅
             </span>
           </Link>
 
@@ -70,7 +70,7 @@ export function Navigation() {
           <Link href="/" onClick={() => setIsOpen(false)} className="mb-4 flex flex-col items-center leading-none">
             <span className="font-playfair text-2xl italic text-foreground">Jessica Wong</span>
             <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              日本への旅 (Journey to Japan)
+              日本への旅
             </span>
           </Link>
 
