@@ -57,46 +57,50 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile full-screen menu */}
-      {isOpen && (
-        <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-10 bg-background md:hidden">
-          <button
+      {/* Mobile full-screen menu — always mounted so SubscribeDialog's own open
+          state survives clicking "Join the Journey" (toggled via CSS, not
+          conditional rendering, or the dialog would unmount before it opens) */}
+      <div
+        className={`fixed inset-0 z-[60] flex flex-col items-center justify-center gap-10 bg-background transition-opacity duration-200 md:hidden ${
+          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <button
+          onClick={() => setIsOpen(false)}
+          className="absolute right-6 top-6 cursor-pointer text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground"
+        >
+          Close
+        </button>
+
+        <Link href="/" onClick={() => setIsOpen(false)} className="mb-4 flex flex-col items-center leading-none">
+          <span className="font-playfair text-2xl italic text-foreground">Jessica Wong</span>
+          <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+            日本への旅
+          </span>
+        </Link>
+
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
             onClick={() => setIsOpen(false)}
-            className="absolute right-6 top-6 cursor-pointer text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground"
+            className="font-playfair text-3xl italic text-foreground"
           >
-            Close
-          </button>
-
-          <Link href="/" onClick={() => setIsOpen(false)} className="mb-4 flex flex-col items-center leading-none">
-            <span className="font-playfair text-2xl italic text-foreground">Jessica Wong</span>
-            <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              日本への旅
-            </span>
+            {link.label}
           </Link>
+        ))}
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
+        <SubscribeDialog
+          trigger={
+            <button
               onClick={() => setIsOpen(false)}
-              className="font-playfair text-3xl italic text-foreground"
+              className="cursor-pointer font-playfair text-2xl italic text-[oklch(0.5_0.07_55)]"
             >
-              {link.label}
-            </Link>
-          ))}
-
-          <SubscribeDialog
-            trigger={
-              <button
-                onClick={() => setIsOpen(false)}
-                className="cursor-pointer font-playfair text-2xl italic text-[oklch(0.5_0.07_55)]"
-              >
-                Join the Journey
-              </button>
-            }
-          />
-        </div>
-      )}
+              Join the Journey
+            </button>
+          }
+        />
+      </div>
     </>
   )
 }
