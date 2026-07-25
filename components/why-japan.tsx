@@ -8,7 +8,7 @@ const stats = [
 
 export function WhyJapan() {
   return (
-    <section id="why-japan" className="scroll-mt-16 bg-foreground py-24 text-background md:py-32">
+    <section id="why-japan" className="scroll-mt-24 bg-foreground py-24 text-background md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         {/* Intro with photo */}
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">

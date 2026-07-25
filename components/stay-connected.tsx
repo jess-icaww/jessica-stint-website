@@ -2,7 +2,7 @@ import { NewsletterForm } from "@/components/newsletter-form"
 
 export function StayConnected() {
   return (
-    <section id="connect" className="scroll-mt-16 bg-background py-24 md:py-32">
+    <section id="connect" className="scroll-mt-24 bg-background py-24 md:py-32">
       <div className="mx-auto max-w-[620px] px-6 text-center">
         <span className="mb-4 inline-block text-xs font-medium uppercase tracking-[0.25em] text-[oklch(0.5_0.07_150)]">
           Walk With Me
