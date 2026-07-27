@@ -26,20 +26,19 @@ export function OpeningLetter() {
           <span className="float-left mr-2 pr-1 font-playfair text-[76px] italic leading-[0.8] text-[oklch(0.27_0.015_60)]">
             I
           </span>
-          would have never thought that after graduating college, God would call me to Japan for a year. Instead, I thought that I would be following my peers in pursuing my career and trying to build a name for myself.
-          
+          f you told me a few years ago that God would call me to Japan after graduating, I wouldn&apos;t have believed you.
+          Instead, I thought this year would be spent trying to build my career and exploring my early 20s doing something completely different.
         </p>
 
         <p className="clear-both mt-8 text-[18px] font-light leading-[1.85] text-[oklch(0.4_0.02_60)]">
-          The Lord met me during my college years and radically transformed me as He showed me what it means that Christ died for me though I don't deserve it. The Lord has drastically shaped what it means for me to live a life not for myself, but for Him and His namesake.
+          The Lord met me during college and radifically transformed me after showing me the true weight of Christ's sacrifice, though I don't deserve it.
+          God has been continuing to shape what it means for me to live life not for myself, but for Him and His namesake.
         </p>
 
                 <p className="clear-both mt-8 text-[18px] font-light leading-[1.85] text-[oklch(0.4_0.02_60)]">
-                  As I commit this next year to seeking and serving the Lord in Tokyo, my prayer is that this would not ONLY be a one-year commitment, but just the start of a lifetime spent devoted to Christ until I see Him face to face.
+                  As I commit this next year to seeking and serving the Lord in Japan, my prayer is that this would not JUST be a one-year commitment, but only
+                  the start of a lifetime spent devoted to Christ until I see Him face to face.
         </p>
-
-
-        <p className="mt-8 font-playfair text-[19px] italic text-[oklch(0.27_0.015_60)]">With love, Jessica</p>
       </div>
     </section>
   )
