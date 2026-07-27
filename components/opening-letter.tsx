@@ -17,7 +17,7 @@ export function OpeningLetter() {
           </div>
           <div>
             <p className="font-playfair text-[26px] italic text-[oklch(0.27_0.015_60)]">Jessica Wong</p>
-            <p className="mt-1 text-[14px] text-[oklch(0.5_0.02_65)]">Writing from Tokyo, Japan &middot; Year One</p>
+            <p className="mt-1 text-[14px] text-[oklch(0.5_0.02_65)]">Tokyo, Japan &middot; 2026-2027</p>
           </div>
         </div>
 
@@ -26,18 +26,18 @@ export function OpeningLetter() {
           <span className="float-left mr-2 pr-1 font-playfair text-[76px] italic leading-[0.8] text-[oklch(0.27_0.015_60)]">
             I
           </span>
-          f you&apos;d told me a few years ago that I&apos;d be writing to you from a small apartment in
-          Tokyo, I&apos;m not sure I would have believed you. But here I am &mdash; kettle on, notebook open,
-          trying to put words to a year that&apos;s already changing me.
+          would have never thought that after graduating college, God would call me to Japan for a year. Instead, I thought that I would be following my peers in pursuing my career and trying to build a name for myself.
+          
         </p>
 
         <p className="clear-both mt-8 text-[18px] font-light leading-[1.85] text-[oklch(0.4_0.02_60)]">
-          Some days it&apos;s a real conversation with a student who&apos;s finally asking the honest
-          questions. Other days it&apos;s fumbling a word in Japanese badly enough to make a whole room
-          laugh, or sitting with tea in the quiet before anyone else is awake, wondering if I&apos;m doing
-          any of this right. I want to keep you close to all of it &mdash; the small wins, the language
-          mistakes, the quiet mornings, and the harder days too, not just the highlight reel.
+          The Lord met me during my college years and radically transformed me as He showed me what it means that Christ died for me though I don't deserve it. The Lord has drastically shaped what it means for me to live a life not for myself, but for Him and His namesake.
         </p>
+
+                <p className="clear-both mt-8 text-[18px] font-light leading-[1.85] text-[oklch(0.4_0.02_60)]">
+                  As I commit this next year to seeking and serving the Lord in Tokyo, my prayer is that this would not ONLY be a one-year commitment, but just the start of a lifetime spent devoted to Christ until I see Him face to face.
+        </p>
+
 
         <p className="mt-8 font-playfair text-[19px] italic text-[oklch(0.27_0.015_60)]">With love, Jessica</p>
       </div>
