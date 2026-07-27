@@ -36,7 +36,7 @@ export function OpeningLetter() {
         </p>
 
                 <p className="clear-both mt-8 text-[18px] font-light leading-[1.85] text-[oklch(0.4_0.02_60)]">
-                  As I commit this next year to seeking and serving the Lord in Japan, my prayer is that this would not JUST be a one-year commitment, but only
+                  As I commit this next year to seeking and serving the Lord in Japan, my prayer is that this would not JUST be a one-year commitment, but
                   the start of a lifetime spent devoted to Christ until I see Him face to face.
         </p>
       </div>
