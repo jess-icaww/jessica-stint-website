@@ -31,7 +31,7 @@ export function OpeningLetter() {
         </p>
 
         <p className="clear-both mt-8 text-[18px] font-light leading-[1.85] text-[oklch(0.4_0.02_60)]">
-          The Lord met me during college and radifically transformed me after showing me the true weight of Christ's sacrifice, though I don't deserve it.
+          The Lord met me during college and radically transformed me after showing me the true weight of Christ's sacrifice, though I don't deserve it.
           God has been continuing to shape what it means for me to live life not for myself, but for Him and His namesake.
         </p>
 
