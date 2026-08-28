@@ -7,6 +7,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { sql } from "@/lib/db"
+import { DeleteSubscriberButton } from "@/components/delete-subscriber-button"
+import { SyncSubscribersButton } from "@/components/sync-subscribers-button"
 
 async function getSubscribers() {
   return sql`
@@ -25,15 +27,17 @@ export default async function SubscribersPage() {
         <h1 className="mb-1 font-serif text-2xl font-medium text-foreground">
           Subscribers
         </h1>
-        <p className="mb-6 text-sm text-muted-foreground">
-          {subscribers.length} total
-        </p>
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">{subscribers.length} total</p>
+          <SyncSubscribersButton />
+        </div>
 
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Email</TableHead>
               <TableHead>Subscribed</TableHead>
+              <TableHead className="w-10" />
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -46,6 +50,9 @@ export default async function SubscribersPage() {
                     day: "numeric",
                     year: "numeric",
                   })}
+                </TableCell>
+                <TableCell>
+                  <DeleteSubscriberButton id={subscriber.id} email={subscriber.email} />
                 </TableCell>
               </TableRow>
             ))}

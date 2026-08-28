@@ -1,7 +1,6 @@
 import { client } from "@/lib/sanity"
 import { PortableText } from "@portabletext/react"
 import { CalendarDays, Download } from "lucide-react"
-import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -10,7 +9,7 @@ import { PdfViewer } from "@/components/pdf-viewer-loader"
 async function getUpdate(slug: string) {
   return client.fetch(
     `*[_type == "update" && slug.current == $slug][0]{
-      title, date, tag, body, "image": image.asset->url, "fileUrl": newsletterFile.asset->url
+      title, date, tag, body, "fileUrl": newsletterFile.asset->url
     }`,
     { slug }
   )
@@ -37,12 +36,6 @@ export default async function UpdatePage({ params }: { params: Promise<{ slug: s
         <h1 className="mb-8 font-serif text-4xl font-light text-foreground md:text-5xl">
           {update.title}
         </h1>
-
-        {update.image && (
-          <div className="relative mb-8 aspect-[16/10] overflow-hidden rounded-lg shadow-md">
-            <Image src={update.image} alt={update.title} fill className="object-cover" />
-          </div>
-        )}
 
         {update.fileUrl && (
           <div className="mb-8">
