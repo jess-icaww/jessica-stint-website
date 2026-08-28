@@ -1,3 +1,5 @@
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { TimelineProgress } from "@/components/timeline-progress"
 import { TimelineEndMarker } from "@/components/timeline-end-marker"
@@ -19,8 +21,8 @@ const milestones: Milestone[] = [
   {
     year: "2023",
     place: "Southeast Asia",
-    lesson: "God showed me He is at work among the nations.",
-    body: "One of my first times serving cross-culturally. I arrived unsure of what I had to offer, and left having watched God move in places and people I never expected. My eyes were opened to a world far bigger than my own.",
+    lesson: "God showed me that He is greater than who I thought He was.",
+    body: "During my sophomore year of college, the Lord convicted me to surrender my summer plans to go overseas for His namesake. On this trip, God placed a deep burden in me to pursue what is related to His kingdom: things that are eternal, ands will NOT fade away.",
     image: "/images/sea.jpg",
     alt: "Southeast Asia Missions Trip 2023",
     imageZoom: 1.2,
@@ -50,11 +52,10 @@ export function AboutMe() {
               My Story
             </span>
             <h2 className="font-serif text-4xl font-light leading-tight text-foreground text-balance md:text-5xl">
-              How God Led Me Here
+              Three Summers, One Calling
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground text-pretty">
-              This was never about choosing a country. Looking back over three summers, I can see how God
-              patiently expanded my heart for His mission — one step at a time.
+              Each year the Lord continues to break my heart for those who do not yet know Him. I realize that the Lord is not so concerned with where I’ll be or what I’ll be doing, as He is with my obedience and sanctification.
             </p>
           </div>
         </Reveal>
@@ -208,6 +209,14 @@ export function AboutMe() {
               where God is leading me next.
             </p>
             <p className="mt-10 font-serif text-2xl font-light italic text-foreground">— Jessica</p>
+
+            <Link
+              href="/testimony"
+              className="group mt-10 inline-flex items-center gap-2 border-b border-transparent text-sm font-medium text-primary transition-colors hover:border-current"
+            >
+              Read My Full Testimony
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </Reveal>
       </div>
